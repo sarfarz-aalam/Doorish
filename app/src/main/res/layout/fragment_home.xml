@@ -1,0 +1,1383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/txtDeliverTo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:textColor="#ffffff" />
+
+
+        <AutoCompleteTextView
+            android:id="@+id/txtSearchGlobal"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_corner"
+            android:completionThreshold="1"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="6dp"
+            android:hint="@string/search"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </LinearLayout>
+
+
+
+
+    <ScrollView
+        android:id="@+id/homeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/layout0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+
+                android:background="#EDEDED"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+
+
+
+                <CheckBox
+                    android:id="@+id/chkSearchLocal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/mr_city_search_in_your_city"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/chkSearchByBrands"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/search_by_brands"
+                    android:visibility="gone" />
+
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carousel"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="5000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" />
+
+
+                <ImageView
+                    android:id="@+id/dashboard_pic1"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:contentDescription="@string/dashboard_image"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/dashboard_pic2"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/dashboard_image"
+                    android:scaleType="fitXY" />
+
+                <!--        Grid 0-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EDEDED"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/header_grp0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#EDEDED"
+                        android:padding="12dp"
+                        android:text="@string/shop_by_category"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/GridCategories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border"
+                                tools:ignore="UselessParent">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd0Imgfruits"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="200dp"
+                                        android:contentDescription="@string/dashboard_image"
+                                        android:src="@drawable/ic_fruits_and_vegetables" />
+
+                                    <TextView
+                                        android:id="@+id/item1_grp0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd0Imgfruits"
+                                        android:layout_centerHorizontal="true"
+                                        android:text="@string/vegetable_and_fruits"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid0_img1_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:paddingHorizontal="8dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd0ImgGroceries"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="200dp"
+                                        android:contentDescription="@string/dashboard_image"
+                                        android:src="@drawable/ic_groceries_new" />
+
+                                    <TextView
+                                        android:id="@+id/item2_grp0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd0ImgGroceries"
+                                        android:layout_centerHorizontal="true"
+                                        android:text="@string/groceries"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid0_img2_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:paddingHorizontal="8dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border"
+                                tools:ignore="UselessParent">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd0ImgSweets"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="200dp"
+                                        android:contentDescription="@string/dashboard_image"
+                                        android:src="@drawable/ic_sweets" />
+
+                                    <TextView
+                                        android:id="@+id/item3_grp0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd0ImgSweets"
+                                        android:layout_centerHorizontal="true"
+                                        android:text="Sweets &amp; Savouries"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid0_img3_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:paddingHorizontal="8dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border"
+                                tools:ignore="UselessParent">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd0ImgletsParty"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="200dp"
+                                        android:contentDescription="@string/dashboard_image"
+                                        android:src="@drawable/ic_lets_party_2" />
+
+                                    <TextView
+                                        android:id="@+id/item4_grp0"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd0ImgletsParty"
+                                        android:layout_centerHorizontal="true"
+                                        android:text="Let's Party"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid0_img4_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:paddingHorizontal="8dp"
+                                    android:textAllCaps="false"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+
+                    </GridLayout>
+                </LinearLayout>
+
+                <!--        Grid 1-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EDEDED"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/header_grp1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#EDEDED"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/GridLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd1Img1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp"
+                                        android:contentDescription="@string/dashboard_image" />
+
+                                    <TextView
+                                        android:id="@+id/item1_grp1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd1Img1"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid1_img1_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd1Img2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item2_grp1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd1Img2"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid1_img2_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd1Img3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item3_grp1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd1Img3"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid1_img3_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd1Img4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item4_grp1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd1Img4"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid1_img4_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+
+                <!--        Grid 2-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EDEDED"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/header_grp2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#EDEDED"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/GridLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd2Img1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item1_grp2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd2Img1"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid2_img1_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd2Img2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item2_grp2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd2Img2"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid2_img2_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd2Img3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item3_grp2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/grd2Img3"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid2_img3_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd2Img4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item4_grp2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd2Img4"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid2_img4_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/dashboard_pic3"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:scaleType="fitXY" />
+
+
+                <!--        Grid 3-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EDEDED"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/header_grp3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#EDEDED"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/GridLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd3Img1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+
+                                    <TextView
+                                        android:id="@+id/item1_grp3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/grd3Img1"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid3_img1_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd3Img2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item2_grp3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd3Img2"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid3_img2_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd3Img3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item3_grp3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd3Img3"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid3_img3_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="6dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd3Img4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item4_grp3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd3Img4"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid3_img4_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+
+
+                <!--        Grid 4-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#EDEDED"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/header_grp4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#EDEDED"
+                        android:padding="12dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/GridLayout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd4Img1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item1_grp4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd4Img1"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid4_img1_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd4Img2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item2_grp4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd4Img2"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid4_img2_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd4Img3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item3_grp4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd4Img3"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid4_img3_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="6dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/card_border">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="6dp">
+
+                                    <ImageView
+                                        android:id="@+id/grd4Img4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="200dp" />
+
+                                    <TextView
+                                        android:id="@+id/item4_grp4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/grd4Img4"
+                                        android:layout_centerHorizontal="true"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+
+                                <Button
+                                    android:id="@+id/grid4_img4_discount"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="24dp"
+                                    android:layout_alignParentStart="true"
+                                    android:layout_alignParentTop="true"
+                                    android:background="@drawable/dashboard_discount_bg"
+                                    android:padding="0dp"
+                                    android:text="20% Off"
+                                    android:textColor="#ffffff"
+                                    android:textSize="13sp" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/dashboard_pic4"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/dashboard_pic5"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="6dp"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</LinearLayout>

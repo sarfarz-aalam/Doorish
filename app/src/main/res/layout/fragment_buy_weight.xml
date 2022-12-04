@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.products.BuyWeightFragment"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryLight"
+        app:cardCornerRadius="8dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="8dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy per gram"
+                android:layout_centerHorizontal="true"
+                android:foregroundGravity="center_horizontal"
+                android:textSize="18sp"
+
+                android:textColor="@color/white"
+            />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View style="@style/Divider"
+        android:id="@+id/divider3"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="12dp"/>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <ImageView
+            android:id="@+id/imgProduct"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_margin="12dp"
+            android:padding="6dp"
+            android:src="@mipmap/product_placeholder"/>
+
+        <TextView
+            android:id="@+id/txtProductTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apple iPhone XR (64GB) - White"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/imgProduct"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/flat_black" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyle"
+            android:layout_width="245dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="6dp"
+            android:isIndicator="true"
+            android:focusable="false"
+            android:clickable="false"
+            android:max="5"
+            android:progressTint="@color/dusk_yellow"
+            android:layout_marginStart="4dp"
+            android:rating="3.5"
+            android:layout_below="@id/txtProductTitle"
+            android:layout_toEndOf="@id/imgProduct"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:theme="@style/RatingBar"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp" />
+
+        <TextView
+            android:id="@+id/txt_price_per_gram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="₹52,500.00"
+            android:layout_toEndOf="@id/imgProduct"
+            android:layout_below="@id/ratingBar"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="4dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/mrp_color" />
+
+        <View style="@style/Divider"
+            android:id="@+id/divider"
+            android:layout_below="@id/imgProduct"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"/>
+
+
+
+        <TextView
+            android:id="@+id/txt_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please fill weight in grams as per your choice"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/price_green"
+            android:layout_below="@id/divider"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:id="@+id/txt_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:paddingVertical="4dp"
+
+            android:text="Weight (Grams): "
+            android:textSize="15sp"
+            android:layout_below="@+id/txt_desc"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edit_text_weight"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_line_edittext_bg"
+            android:layout_toEndOf="@id/txt_weight"
+            android:inputType="number|numberDecimal"
+            android:padding="2dp"
+
+            android:layout_alignTop="@+id/txt_weight"
+            android:layout_marginStart="4dp"
+            android:layout_alignBottom="@id/txt_weight"
+            android:layout_below="@id/divider" />
+
+        <TextView
+            android:id="@+id/txt_amount_ph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_toStartOf="@+id/txtProductCharges"
+            android:layout_marginTop="12dp"
+            android:text="Net Amount: "
+            android:paddingVertical="4dp"
+            android:textSize="15sp"
+            android:layout_below="@+id/txt_desc"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/info_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_weight"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_info"/>
+
+            <TextView
+                android:id="@+id/txt_max_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Maximum weight allowed is 5000gm OR 5kg"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtProductCharges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="4dp"
+            android:text=""
+            android:layout_below="@+id/txt_desc"
+            android:paddingVertical="4dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:textSize="15sp"
+            android:textColor="@color/flat_black"
+            android:textStyle="bold" />
+
+        <View style="@style/Divider"
+            android:id="@+id/divider_2"
+            android:layout_below="@id/info_layout"
+            android:layout_margin="12dp"/>
+
+
+
+
+        <Button
+            android:id="@+id/btnAddToCart"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:text="Add to Cart"
+            android:layout_below="@id/divider_2"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            android:background="@drawable/gradient" />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

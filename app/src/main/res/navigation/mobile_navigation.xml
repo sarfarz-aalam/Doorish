@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.pentaware.doorish.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.pentaware.doorish.ui.products.ProductFragment"
+        android:label="@string/menu_products"
+        android:tag="pd"
+        tools:layout="@layout/product_fragment">
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="All"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_wishlist"
+        android:name="com.pentaware.doorish.ui.products.ProductFragment"
+        android:label="My Wishlist"
+        android:tag="pd"
+        tools:layout="@layout/product_fragment">
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="wishlist"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.pentaware.doorish.ui.orders.MyOrdersFragment"
+        android:label="My Orders"
+        tools:layout="@layout/my_orders_fragment" />
+
+    <fragment
+        android:id="@+id/nav_city_orders"
+        android:name="com.pentaware.doorish.ui.orders.CityOrdersFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/city_orders_fragment" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.pentaware.doorish.ui.address.AddressFragment"
+        android:label="Manage Addresses"
+        tools:layout="@layout/address_fragment" />
+
+    <fragment
+        android:id="@+id/nav_myprofile"
+        android:name="com.pentaware.doorish.ui.myprofile.MyProfileFragment"
+        android:label="My Profile"
+        tools:layout="@layout/my_profile_fragment" />
+
+
+<!--    <item-->
+<!--        android:id="@+id/nav_myprofile"-->
+<!--        android:icon="@drawable/ic_account_circle_18px"-->
+<!--        android:title="My Profile" />-->
+
+    <fragment
+        android:id="@+id/nav_city"
+        android:name="com.pentaware.doorish.ui.mrcity.MrCityCategories"
+        android:label="Categories"
+        tools:layout="@layout/shop_fragment" />
+
+
+    <fragment
+        android:id="@+id/nav_city_favorite"
+        android:name="com.pentaware.doorish.ShopFragment"
+        android:label="My Favorite Mr. City Sellers"
+        tools:layout="@layout/shop_fragment">
+
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="favorite"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_offline_requests"
+        android:name="com.pentaware.doorish.ui.offline_requests.OfflineRequestFragment"
+        android:label="My Offline Requests"
+        tools:layout="@layout/offline_request_fragment" />
+
+
+    <fragment
+        android:id="@+id/nav_category_electronics"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Electronics and Appliances"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Electronics and Appliances"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_clothes"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Fashion and apparels"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Fashion and apparels"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_grocery"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Groceries"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Groceries"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_vegetables"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Vegetables and fruits"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Vegetables and Fruites"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_sweets"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Sweets and Savouries"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Sweets and Savouries"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_party"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Let's Party"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Let's Party"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_footwears"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Footwears"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Footwears"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_essetials"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Pandemic Needs"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Pandemic Needs"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_category_booktoys"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Books, Toys, Games, Baby products"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Books, Toys, Games, Baby products"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_home_decor"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Home, Kitchen, pets, Furniture"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Home, Kitchen, pets, Furniture"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_mobile_computers"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Mobiles, Computers"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Mobiles, Computers"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_sports_fitness"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Sports, Fitness, Bags and Luggage"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Sports, Fitness, Bags And Luggage"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_cakes_and_sweets"
+        android:name="com.pentaware.doorish.ui.subcategories.SubCategories"
+        android:label="Cakes, Sweets and Confectionaries"
+        tools:layout="@layout/product_fragment" >
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Cakes, Sweets and Confectionaries"/>
+
+        <argument
+            android:name="searchlocal"
+            app:argType="string"
+            android:defaultValue="false"/>
+
+        <argument
+            android:name="areapin"
+            app:argType="string"
+            android:defaultValue="default"/>
+    </fragment>
+
+
+
+
+<!--    Home decor and All unique-->
+
+    <fragment
+        android:id="@+id/nav_video"
+        android:name="com.pentaware.doorish.ui.videos.ShowVideoFragment"
+        android:label="Show Videos"
+        tools:layout="@layout/show_video_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_return_and_refund"
+        android:name="com.pentaware.doorish.policies.ReturnAndRefundPolicy"
+        android:label="Return And Refund Policy"
+        tools:layout="@layout/return_and_refund_policy_fragment" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_privacy_policy"
+        android:name="com.pentaware.doorish.policies.PrivacyPolicy"
+        android:label="Privacy Policy"
+        tools:layout="@layout/privacy_policy_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_terms"
+        android:name="com.pentaware.doorish.policies.TermsAndConditions"
+        android:label="Terms and Conditions"
+        tools:layout="@layout/terms_and_conditions_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.pentaware.doorish.policies.AboutUs"
+        android:label="About Us"
+        tools:layout="@layout/about_us_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_contactus"
+        android:name="com.pentaware.doorish.policies.ContactUs"
+        android:label="Contact Us"
+        tools:layout="@layout/contact_us_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_chat"
+        android:name="com.pentaware.doorish.ui.chat.ChatFragment"
+        android:label="Chat With Us"
+        tools:layout="@layout/chat_fragment" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="com.pentaware.doorish.ui.feedback.FeedbackFragment"
+        android:label="Feedback and Suggestions"
+        tools:layout="@layout/feedback_fragment" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_view_feedback"
+        android:name="com.pentaware.doorish.ui.feedback.ViewFeedbackFragment"
+        android:label="App reviews"
+        tools:layout="@layout/fragment_view_feedback" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_faq"
+        android:name="com.pentaware.doorish.ui.faq.faqFragment"
+        android:label="FAQ"
+        tools:layout="@layout/faq_fragment" >
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_create_offline_order"-->
+<!--        android:name="com.pentaware.doorish.CreateOfflineOrderFragment"-->
+<!--        android:label="Create Offline Order"-->
+<!--        tools:layout="@layout/fragmnet_create_offline_order" >-->
+<!--    </fragment>-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_view_offline_order"-->
+<!--        android:name="com.pentaware.doorish.ViewOfflineOrdersFragment"-->
+<!--        android:label="View Offline Order"-->
+<!--        tools:layout="@layout/fragment_view_offline_orders" >-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/cartFragmentNav"
+        android:name="com.pentaware.doorish.CartFragmentNav"
+        android:label="My Cart" />
+
+    <fragment
+        android:id="@+id/nav_refer_and_earn"
+        android:name="com.pentaware.doorish.ReferAndEarnFragment"
+        android:label="Refer and Earn"
+        tools:layout="@layout/fragment_refer_and_earn" />
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.pentaware.doorish.ui.products.ProductDetailFragment"
+        android:label="ProductDetailFragment" >
+        <argument
+            android:name="Product"
+            app:argType="com.pentaware.doorish.model.Product" />
+    </fragment>
+
+
+</navigation>

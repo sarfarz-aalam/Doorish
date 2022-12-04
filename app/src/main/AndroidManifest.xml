@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pentaware.doorish">
+
+    <queries>
+        <package android:name="com.whatsapp" />
+    </queries>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- <uses-permission-sdk-23 android:name="android.permission.READ_PHONE_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.RECEIVE_SMS" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_SMS" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.pentaware.HostFragmentActivity"
+            android:exported="false" />
+        <activity android:name=".OrderPlacedActivity"
+            android:exported="false"/>
+        <activity android:name=".VerifyOtpActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ui.address.ChangeDeliveryAddressActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+        <activity
+            android:name=".ShowPrivacyPolicyActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+        <activity
+            android:name=".BlockApkActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+        <activity
+            android:name=".TrackOrderActivity"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+        <activity
+            android:name=".IfUserNotActive"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+        <activity
+            android:name=".ReferAndEarn"
+            android:screenOrientation="portrait"
+            android:exported="false"/>
+
+        <service
+            android:name=".MyMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".codPopup"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/AppTheme.PopupTheme" />
+        <activity android:name=".OfflineRequestListing"
+            android:exported="false"/>
+        <activity
+            android:name=".PostYOurRequirement"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CityOrdersListing"
+            android:exported="false"/>
+        <activity android:name=".PrevNext"
+            android:exported="false"/>
+        <activity
+            android:name=".PopupVersion"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/AppTheme.PopupTheme" />
+        <activity
+            android:name=".RegisterUser"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Splash"
+
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_title"
+            android:screenOrientation="portrait"
+
+            android:exported="true"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".YoutubePlayerActivity"
+            android:exported="false"/>
+        <activity android:name=".VideoListing"
+            android:exported="false"/>
+        <activity android:name=".OrderListing"
+            android:exported="false"/>
+        <activity
+            android:name=".UserOtherDetails"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AddressListing"
+            android:exported="false"/>
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CartListing"
+            android:exported="false"/>
+        <activity android:name=".ReviewListing"
+            android:exported="false"/>
+        <activity android:name=".ShopListing"
+            android:exported="false"/>
+        <activity android:name=".ProductListing"
+            android:exported="false"/>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Popup"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopupTheme" />
+        <activity
+            android:name=".LandingPage"
+            android:label="@string/title_activity_landing_page"
+            android:screenOrientation="portrait"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity"
+            android:exported="false">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:exported="false"
+            android:value="rzp_test_2ZpqgSyZMdmdzJ" />
+
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/CheckoutTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <data
+                    android:host="rzp.io"
+                    android:scheme="io.rzp" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="true"
+            android:permission="android.permission.INTERNET">
+            <intent-filter>
+                <action android:name="rzp.device_token.share" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+</manifest>

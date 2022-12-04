@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ShopListing">
+
+
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:baselineAligned="false"
+        android:elevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgShop"
+                    android:layout_width="300px"
+                    android:layout_height="300px"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="2dp"
+                    android:src="@mipmap/product_placeholder"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/imgShop"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/txtShopName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:text="Shop Name"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="@color/textBoxStroke"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RatingBar
+                            android:id="@+id/ratingBar_Shop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleX="0.5"
+                            android:scaleY="0.5"
+                            android:rating="3.5"
+                            android:transformPivotX="0dp"
+                            android:transformPivotY="0dp"
+                            android:max="5"
+                            android:progressTint="@color/dusk_yellow"
+                            style="?android:attr/ratingBarStyle"
+                            android:theme="@style/RatingBar"/>
+
+                        <!--                    <TextView-->
+                        <!--                        android:id="@+id/txtProducName_Shop"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_marginLeft="5dp"-->
+                        <!--                        android:text="Product Name" />-->
+
+                        <!--                    <LinearLayout-->
+                        <!--                        android:id="@+id/layoutPrice_shop"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:orientation="horizontal">-->
+
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginLeft="5dp"-->
+                        <!--                            android:text="Product Price" />-->
+
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/txtProductPrice_Shop"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:textColor="@color/mrp_color"-->
+                        <!--                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+                        <!--                            android:layout_marginLeft="5dp"-->
+                        <!--                            android:text="52000" />-->
+
+                        <!--                    </LinearLayout>-->
+
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/txtAddresLine1_Shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Address Line1" />
+
+                    <TextView
+                        android:id="@+id/txtAddresLine2_Shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Address Line2" />
+
+                    <TextView
+                        android:id="@+id/txtAddresLine3_Shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Address Line3" />
+
+
+
+
+                    <!--                        <View-->
+                    <!--                            android:id="@+id/line"-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="1dp"-->
+                    <!--                            android:layout_margin="5dp"-->
+                    <!--                            android:background="@android:color/darker_gray" />-->
+
+
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/txtLandmark_Shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Lankmark" />
+
+                <TextView
+                    android:id="@+id/txtCity_Shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="City" />
+
+                <TextView
+                    android:id="@+id/txtPincode_Shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="PIncode" />
+
+                <TextView
+                    android:id="@+id/txtTimings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Timings" />
+
+                <TextView
+                    android:id="@+id/txtOfers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/text_size_large"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/txtAboutShop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="" />
+
+                <Button
+                    android:id="@+id/btnHeartSeller"
+                    android:layout_width="25sp"
+                    android:layout_height="25sp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="25dp"
+                    android:background="@drawable/ic_favorite_border_24px"/>
+
+                <Button
+                    android:id="@+id/btnPostYourRequirement"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Post Your Requirement"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/gradient"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

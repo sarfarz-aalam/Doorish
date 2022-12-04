@@ -1,0 +1,112 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/open_sans_regular</item>
+        <item name="android:elevation">0dp</item>
+        <item name="actionButtonStyle">@style/ActionButtonStyle</item>
+
+        <item name="android:windowContentOverlay">@null</item>
+
+    </style>
+
+    <style name="ActionButtonStyle" parent="Widget.AppCompat.ActionButton">
+        <item name="android:minWidth">0dip</item>
+        <item name="android:maxWidth">70dip</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="android:textAppearance">@style/menu_text_style</item>
+    </style>
+
+    <style name="menu_text_style" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Menu">
+        <item name="android:textSize">6sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="CardViewStyle" parent="CardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">4dp</item>
+
+    </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/dusk_yellow</item>
+        <item name="colorControlActivated">@color/light_grey</item>
+    </style>
+
+    <style name="AppTheme.PopupTheme" >
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="NavigationDrawerStyle">
+        <item name="android:lines">3</item>
+    </style>
+
+    <style name="TextAppearance">
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="NavigationTheme" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginBottom">02dp</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <!--    <style name="AppThemeBase" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <!--        <item name="android:actionBarStyle">@style/MyActionBar</item>-->
+    <!--        &lt;!&ndash; Support library compatibility &ndash;&gt;-->
+    <!--        <item name="actionBarStyle">@style/MyActionBar</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="AppTheme" parent="AppThemeBase">-->
+    <!--        &lt;!&ndash; All the customizations that are NOT specific to a particular API level can go here &ndash;&gt;-->
+    <!--    </style>-->
+
+    <!--    &lt;!&ndash; ActionBar styles &ndash;&gt;-->
+    <!--    <style name="MyActionBar">-->
+    <!--        <item name="android:background">@drawable/gradient</item>-->
+    <!--        &lt;!&ndash; Support library compatibility &ndash;&gt;-->
+    <!--        <item name="background">@drawable/gradient</item>-->
+    <!--    </style>-->
+
+</resources>

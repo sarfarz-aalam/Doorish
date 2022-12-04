@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="flat_black">#2a2b2b</color>
+    <color name="white">#FFFFFFFF</color>
+
+<!--    <color name="colorPrimary">#01a0e8</color>-->
+<!--    <color name="colorPrimaryDark">	#01a0e8</color> -->
+
+<!--    green-->
+<!--    <color name="colorPrimary">#03bd00</color>-->
+<!--    <color name="colorPrimaryDark">#03bd00</color>-->
+
+<!--    grey-->
+<!--        <color name="colorPrimary">#919690</color>-->
+<!--        <color name="colorPrimaryDark">#919690</color>-->
+
+    <color name="price_green">#1B9218</color>
+
+    <color name="colorPrimary">#eb6b34</color>
+    <color name="colorPrimaryLight">#F48F63</color>
+    <color name="colorPrimaryDark">#eb6b34</color>
+    <color name="disabled">#B8B8B8</color>
+
+    <color name="color_grey">#E5E5E5</color>
+
+
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorLightBlue">#33A5FF</color>
+    <color name="colorLight">#8ECBFA</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+
+    <color name="textBoxStroke">#000000</color>
+    <color name="textColor">#000000</color>
+    <color name="colorBtnBackground">#24A0ED</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorCardRed">#B20000</color>
+    <color name="colorGreenButton">#00cc00</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name="theme_color">#c0d70d</color>
+
+    <color name="dusk_yellow">#ffc922</color>
+    <color name="colorPrimaryEarlier">#0e316e</color>-->
+    <color name="light_grey">#D3D3D3</color>
+
+    <color name="mrp_color">#c94132</color>
+
+    <color name="variant_color">#80dba97d</color>
+
+    <color name="savings_color">#00cc00</color>
+
+    <color name="product_title_color">#1c03fc</color>
+
+</resources>

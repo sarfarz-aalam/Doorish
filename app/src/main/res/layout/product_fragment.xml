@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/productFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.products.ProductFragment">
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar_add_to_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:translationZ="90dp"
+        android:visibility="gone"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:id="@+id/sort_filter_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/layout_sort_filter_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#e5e5e5"
+            android:padding="4dp">
+
+            <Button
+                android:id="@+id/btn_filter_products"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:drawableStart="@drawable/ic_filter"
+                android:text="Filter"
+                android:textSize="14sp"
+                android:background="@drawable/white_btn_bg"
+                android:layout_marginBottom="2dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="2dp"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_sort_products"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:drawableStart="@drawable/ic_sort"
+                android:text="Sort"
+                android:textSize="14sp"
+                android:background="@drawable/white_btn_bg"
+                android:layout_toStartOf="@+id/btn_filter_products"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:textAllCaps="false" />
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_sort_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/layout_sort_filter_buttons"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_filter_products"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/recycler_view_sort_products"/>
+
+
+
+    </RelativeLayout>
+
+
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:text="Hello" />-->
+
+
+    <RelativeLayout
+        android:id="@+id/layoutSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="3dp"
+        android:layout_weight=".28"
+        android:background="@drawable/spinner_background"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@mipmap/dropdown" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutSpinner"
+        android:orientation="vertical">
+
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_error_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txt_error_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:text="Something went wrong"
+            android:textSize="17sp" />
+
+
+        <Button
+            android:id="@+id/btn_retry_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="4dp"
+            android:background="@color/colorPrimary"
+            android:text="Retry"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/progress_bar_recycler"
+        android:layout_below="@+id/sort_filter_layout"
+        android:splitMotionEvents="false"
+        android:clipToPadding="false"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="50dp" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/loading"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="2dp"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/noItemTodisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="No Item to display"
+        android:visibility="gone"/>
+
+</RelativeLayout>

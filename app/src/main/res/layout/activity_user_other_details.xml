@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollViewHome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".UserOtherDetails">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtOhterDetailsName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:hint="Enter Name"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txtOtherDetailsPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Phone Number"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/txtotherDetailsEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Email Address"
+                android:inputType="textEmailAddress"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/txtAddresLine1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Line 1 Address"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+
+            <EditText
+                android:id="@+id/txtAddresLine2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Line 2 Address (Optional)"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+
+            <EditText
+                android:id="@+id/txtAddresLine3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Line 3 Address (Optional)"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+
+            <EditText
+                android:id="@+id/txtLandmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Landmark/Area"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+
+            <EditText
+                android:id="@+id/txtPInCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Pincode"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="4dp" />
+
+            <EditText
+                android:id="@+id/txtCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter City"
+                android:text="Ranchi"
+                android:background="@drawable/rounded_corner"
+                android:layout_margin="4dp" />
+
+            <EditText
+                android:id="@+id/txtState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter State"
+                android:text="Jharkhand"
+                android:layout_margin="4dp"
+                android:background="@drawable/rounded_corner" />
+
+            <EditText
+                android:id="@+id/edit_text_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:focusable="false"
+                android:hint="Date of Birth"
+                android:background="@drawable/rounded_corner" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/layoutGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_margin="6dp"
+                android:text="Select Gender" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:text="Select Gender">
+
+                <RadioButton
+                    android:id="@+id/rbGenderMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Male"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbGenderFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!--    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content" >-->
+
+        <!--        <EditText-->
+        <!--            android:id="@+id/txtDOB"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="Enter Birth date (dd/mm/yyyy) format"-->
+        <!--            android:layout_alignParentLeft="true"-->
+        <!--            android:layout_alignParentTop="true"-->
+        <!--            android:inputType="date">-->
+        <!--            <requestFocus />-->
+        <!--        </EditText>-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/text_view"-->
+        <!--            android:layout_width="30sp"-->
+        <!--            android:layout_height="30sp"-->
+
+        <!--            android:layout_alignParentRight="true"-->
+        <!--            android:src="@mipmap/ic_date_range_black_18dp"-->
+        <!--            android:onClick="onDateBtn_Click" />-->
+        <!--    </RelativeLayout>-->
+
+        <Button
+            android:id="@+id/btnSaveUserDetails"
+            android:text="Save Details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:textColor="#FFFFFF"
+            android:onClick="onSaveOtherDetails_click"
+            android:background="@drawable/gradient"/>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:text="Go to Login Page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:textColor="#FFFFFF"
+            android:onClick="onLogout_Click"
+            android:background="@drawable/gradient"/>
+
+    </LinearLayout>
+
+</ScrollView>

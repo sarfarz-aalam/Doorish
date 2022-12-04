@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.faq.faqListing">
+
+    <Button
+        android:id="@+id/btnExpand"
+        android:layout_width="17sp"
+        android:layout_height="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/ic_drop_down" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/btnExpand"
+        android:text="Question"
+        android:textColor="@color/flat_black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtQuestion"
+        android:layout_alignStart="@id/txtQuestion"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Answer"
+        android:textColor="@color/flat_black"
+        android:textSize="17sp"
+        android:visibility="gone" />
+
+    <View style="@style/Divider"
+        android:layout_below="@id/txtAnswer"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
+
+</RelativeLayout>
+
+

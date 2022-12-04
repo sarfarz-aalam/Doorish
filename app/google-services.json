@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "976553804945",
+    "project_id": "doorish-91d51",
+    "storage_bucket": "doorish-91d51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976553804945:android:0e7966f03888278313eb30",
+        "android_client_info": {
+          "package_name": "com.pentaware.doorish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976553804945-f3bdiasprt735mg2l6homtfo5lg1chn6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pentaware.doorish",
+            "certificate_hash": "a4083a7ac76867aea9bd8ee0225e698ec6d50f8c"
+          }
+        },
+        {
+          "client_id": "976553804945-4jjdtqc4sejl48jrrjqf1iuiafoso57s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1-zfYeMX2zIb9se79tuinCoqXljjxgZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976553804945-4jjdtqc4sejl48jrrjqf1iuiafoso57s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

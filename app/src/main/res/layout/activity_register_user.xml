@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:id="@+id/layoutContainer" android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:translationZ="90dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/layoutRegisterEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/txtRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Email"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textEmailAddress"
+            />
+
+        <EditText
+            android:id="@+id/txtRegisterPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textPassword"
+            />
+
+        <EditText
+            android:id="@+id/txtConfimPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:layout_gravity="center_horizontal"
+            android:inputType="textPassword"
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnRegisterUser"
+        android:text="Register"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15sp"
+        android:textColor="#FFFFFF"
+        android:enabled="true"
+        android:layout_below="@+id/layoutRegisterEmail"
+        android:onClick="onRegister_Click"
+        android:background="@drawable/gradient">
+    </Button>
+
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_border"
+    android:orientation="vertical"
+    tools:context=".codPopup">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_size_large"
+        android:textColor="@color/textBoxStroke"
+        android:text="Press Proceed with Prepaid to get maximum discounts and chance of winning the jackpot.\nPlease Refer Videos Section to know more about Jackpot program." />
+
+    <Button
+        android:id="@+id/continueCOD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/gradient"
+        android:text="Continue With COD"/>
+
+    <Button
+        android:id="@+id/prepaid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/gradient"
+        android:text="Proceed With Prepaid"/>
+
+</LinearLayout>

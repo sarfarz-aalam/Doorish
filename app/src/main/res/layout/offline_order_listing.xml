@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    android:layout_margin="2dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp">
+
+        <ImageView
+            android:id="@+id/img_offline_order"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_offline_order"/>
+
+        <TextView
+            android:id="@+id/txt_offline_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_below="@+id/txt_date_ordered"
+            android:layout_toEndOf="@+id/img_offline_order"
+            android:text="Offline Order"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large" />
+
+        <Button
+            android:id="@+id/btn_view_products_offline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Products"
+            android:layout_marginStart="20dp"
+            android:textAllCaps="false"
+            android:layout_below="@+id/txt_offline_order"
+            android:layout_toEndOf="@id/img_offline_order"/>
+
+        <TextView
+            android:id="@+id/txt_date_ordered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Ordered on 2 April 2021"
+            android:layout_toEndOf="@+id/img_offline_order"
+            android:textSize="@dimen/text_size_large"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

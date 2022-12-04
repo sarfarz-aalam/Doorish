@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.address.AddressFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_add_new_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp">
+
+            <ImageButton
+                android:id="@+id/btn_add_new_address"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_add_24"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:id="@+id/txt_add_new_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Address"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/btn_add_new_address"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnAddAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:text="Add New Address"
+            android:background="#f5de31" />
+
+        <TextView
+            android:id="@+id/txt_saved_addresses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_margin="10dp"
+            android:text="Saved Addresses"
+            android:textColor="@color/flat_black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/addressRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/btn_edit_address"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_edit"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="6dp"
+                android:layout_alignParentEnd="true"
+                android:background="@null"/>
+
+            <LinearLayout
+                android:id="@+id/layoutAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Default Address:" />
+
+                <TextView
+                    android:id="@+id/txtName_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Manoj Kumar" />
+
+                <TextView
+                    android:id="@+id/txtAddresLine1_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address Line 1" />
+
+                <TextView
+                    android:id="@+id/txtAddresLine2_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address Line 2" />
+
+                <TextView
+                    android:id="@+id/txtAddresLine3_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address Line 3" />
+
+                <TextView
+                    android:id="@+id/txtLandmark_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Landmark: " />
+
+                <TextView
+                    android:id="@+id/txtCity_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="City : " />
+
+                <TextView
+                    android:id="@+id/txtState_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="State : " />
+
+                <TextView
+                    android:id="@+id/txtPincode_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pin Code: " />
+
+                <TextView
+                    android:id="@+id/txtContact_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact No: " />
+
+
+<!--                <Button-->
+<!--                    android:id="@+id/btnAddAddress"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text="Add New Address"-->
+<!--                    android:background="#f5de31"-->
+<!--                    />-->
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+
+                    android:background="@android:color/darker_gray" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/loading"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+
+</FrameLayout>

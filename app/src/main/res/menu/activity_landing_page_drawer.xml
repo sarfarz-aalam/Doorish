@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_24px"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_shopping_cart_24px"
+            android:title="@string/menu_products" />
+
+        <item
+            android:id="@+id/nav_wishlist"
+            android:icon="@drawable/ic_favorite_24px_black"
+            android:title="My Wishlist" />
+
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_orders"
+            android:title="My Orders" />
+
+<!--        <item-->
+<!--            android:id="@+id/nav_city_orders"-->
+<!--            android:icon="@drawable/ic_orders"-->
+<!--            android:title="City Orders" />-->
+
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_manage_address"
+            android:title="Manage Addresses" />
+
+        <item
+            android:id="@+id/nav_myprofile"
+            android:icon="@drawable/ic_account_circle_18px"
+            android:title="My Profile" />
+
+<!--        <item android:id="@+id/nav_create_offline_order"-->
+<!--            android:icon="@drawable/ic_shopping_cart_24px"-->
+<!--            android:title="Create Offline Order"/>-->
+
+<!--        <item android:id="@+id/nav_view_offline_order"-->
+<!--            android:icon="@drawable/ic_shopping_cart_24px"-->
+<!--            android:title="View Offline Orders"/>-->
+
+        <item
+            android:id="@+id/nav_refer_and_earn"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/refer_and_earn"
+            app:showAsAction="ifRoom"/>
+
+<!--        <item-->
+<!--            android:id="@+id/cartFragmentNav"-->
+<!--            android:icon="@drawable/ic_shopping_cart_24px"-->
+<!--            android:title="@string/my_cart"-->
+<!--            app:showAsAction="ifRoom"/>-->
+
+    </group>
+
+<!--    <item android:title="Shop Local">-->
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/nav_city"-->
+<!--                android:icon="@drawable/ic_menu_send"-->
+<!--                android:title="Mr. City (Shop In Your City)" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_city_favorite"-->
+<!--                android:icon="@drawable/ic_favorite_24px_black"-->
+<!--                android:title="My Favorite Mr. City Sellers" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_offline_requests"-->
+<!--                android:icon="@drawable/ic_portable_wifi_off_24px"-->
+<!--                android:title="My Offline Requests" />-->
+
+
+<!--        </menu>-->
+<!--    </item>-->
+
+    <item android:title="Shop by Category">
+        <menu>
+
+
+            <item
+                android:id="@+id/nav_category_grocery"
+                android:icon="@drawable/ic_groceries"
+                android:title="Groceries" />
+
+            <item
+                android:id="@+id/nav_category_vegetables"
+                android:title="Vegetables and fruits"
+                android:icon="@drawable/ic_fruites"/>
+
+            <item
+                android:id="@+id/nav_category_sweets"
+                android:title="Sweets &amp; Savouries"
+                android:icon="@drawable/ic_sweets_nav"/>
+
+            <item
+                android:id="@+id/nav_category_party"
+                android:title="Let's Party"
+                android:icon="@drawable/ic_cake_nav"/>
+
+
+<!--            <item-->
+<!--                android:id="@+id/nav_city"-->
+<!--                android:icon="@drawable/ic_subcategory"-->
+<!--                android:title="Shop by Category" />-->
+
+
+
+<!--            <item-->
+<!--                android:id="@+id/nav_category_footwears"-->
+<!--                android:title="Footwears" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_category_essetials"-->
+<!--                android:title="Pandemic Needs" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_category_booktoys"-->
+<!--                android:title="Books, Toys, Games, Baby products" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_home_decor"-->
+<!--                android:title="Home decor and All unique" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_mobile_computers"-->
+<!--                android:title="Mobile, Computers" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_sports_fitness"-->
+<!--                android:title="Sports, Fitness, Bags And Luggage" />-->
+
+<!--            <item-->
+<!--                android:id="@+id/nav_cakes_and_sweets"-->
+<!--                android:title="Cakes, Sweets and Confectionaries" />-->
+
+
+
+
+
+
+
+        </menu>
+    </item>
+
+<!--    <item android:title="Others">-->
+<!--        <menu>-->
+
+<!--&lt;!&ndash;            <item&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/nav_video"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:icon="@drawable/ic_menu_camera"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:title="Videos" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <item&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/nav_chat"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:icon="@drawable/ic_whatsapp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:title="Chat With Us" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <item&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/nav_faq"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:icon="@drawable/ic_question"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:title="FAQ" />&ndash;&gt;-->
+
+
+<!--        </menu>-->
+<!--    </item>-->
+
+
+
+<!--    <item android:title="FAQ">-->
+<!--        <menu>-->
+<!--           -->
+<!--        </menu>-->
+<!--    </item>-->
+
+    <item android:title="Policies">
+        <menu>
+
+            <item
+                android:id="@+id/nav_return_and_refund"
+                android:title="Return and Refund Policy" />
+
+            <item
+                android:id="@+id/nav_privacy_policy"
+                android:title="Privacy Policy" />
+
+            <item
+                android:id="@+id/nav_terms"
+                android:title="Terms and Conditions" />
+
+            <item
+                android:id="@+id/nav_aboutus"
+                android:title="About Us" />
+
+            <item
+                android:id="@+id/nav_contactus"
+                android:title="Contact Us" />
+
+
+        </menu>
+    </item>
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_faq"
+                android:icon="@drawable/ic_question"
+                android:title="FAQ" />
+
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/ic_feedbacks"
+                android:title="Feedback and Suggestions" />
+
+            <item
+                android:id="@+id/nav_view_feedback"
+                android:icon="@drawable/ic_feedbacks"
+                android:title="App reviews" />
+
+
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@drawable/ic_sign_out"
+                android:title="Logout" />
+
+        </menu>
+    </item>
+
+</menu>
