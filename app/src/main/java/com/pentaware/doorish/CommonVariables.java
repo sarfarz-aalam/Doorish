@@ -120,5 +120,7 @@ public class CommonVariables {
 
     public static int maxWeight;
 
+    public static int user_orders = 0;
+
 }
 

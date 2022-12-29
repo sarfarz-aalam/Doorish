@@ -6,6 +6,11 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class CommonMethods {
@@ -272,14 +278,41 @@ public class CommonMethods {
         washingtonRef.update("points", FieldValue.increment(pointsToDeduct));
     }
 
-    public static void debitPoints(double Points) {
+    public static void debitPoints(double Points, String orderId) {
         Log.d("debit_cod", "here: " + Points);
         double pointstoDeduct = -Points;
         Log.d("debit_cod", "here :: " + Points);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference washingtonRef = db.collection("users").document(CommonVariables.m_sFirebaseUserId);
-        washingtonRef.update("points", FieldValue.increment(pointstoDeduct));
+        washingtonRef.update("points", FieldValue.increment(pointstoDeduct)).addOnCompleteListener(task -> updateWalletStatemnet(pointstoDeduct, orderId));
     }
+
+    public static void updateWalletStatemnet(double points, String orderId){
+        points = Math.abs(points);
+        points = setDoublePrecision(points);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String docID = UUID.randomUUID().toString();
+        DocumentReference ref = db.collection("walletStatement").document(CommonVariables.loggedInUserDetails.customer_id).
+                collection("statement").document(docID);
+
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("amount", points);
+        docData.put("details", "Reversal against order ID");
+        docData.put("transaction_type", "debit");
+        docData.put("date", new Timestamp(new Date()));
+        docData.put("order_id", orderId);
+
+        double finalPoints = points;
+        ref.set(docData).addOnCompleteListener(task -> Log.d("wallet_statement", "updated debit: "+ finalPoints));
+    }
+
+    public static double setDoublePrecision(double num){
+
+        DecimalFormat newFormat = new DecimalFormat("#.##");
+        return Double.parseDouble(newFormat.format(num));
+    }
+
+
 
     public static double calculatePointsAgainstPurchase(double amount){
         //first calculate the 2.5 percent of the amount

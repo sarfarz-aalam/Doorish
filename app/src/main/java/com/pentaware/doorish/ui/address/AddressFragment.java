@@ -122,7 +122,12 @@ public class AddressFragment extends BaseFragment implements IAddressOperation {
 
         ImageButton btnAddNewAddress = mView.findViewById(R.id.btn_add_new_address);
         TextView txtAddNewAddress = mView.findViewById(R.id.txt_add_new_address);
+        Button btnAddAddres = mView.findViewById(R.id.btn_add_address);
         RelativeLayout layoutAddNewAddress = mView.findViewById(R.id.layout_add_new_address);
+
+        btnAddAddres.setOnClickListener(view -> {
+            addNewAddress();
+        });
 
         btnAddNewAddress.setOnClickListener(new View.OnClickListener() {
             @Override

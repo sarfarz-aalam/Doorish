@@ -39,6 +39,16 @@
             android:icon="@drawable/ic_account_circle_18px"
             android:title="My Profile" />
 
+        <item
+            android:id="@+id/nav_wallet_statement"
+            android:icon="@drawable/ic_wallet"
+            android:title="Wallet Statement" />
+
+        <item
+            android:id="@+id/nav_coupon_and_reward"
+            android:icon="@drawable/ic_discount"
+            android:title="Coupons and Rewards" />
+
 <!--        <item android:id="@+id/nav_create_offline_order"-->
 <!--            android:icon="@drawable/ic_shopping_cart_24px"-->
 <!--            android:title="Create Offline Order"/>-->

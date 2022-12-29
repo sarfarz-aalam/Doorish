@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 android:text="We'll send a confirmation when your items ship."
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -136,6 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="14dp"
                             android:layout_marginBottom="14dp"
+                            android:visibility="gone"
                             android:text="Item Total"
                             android:textSize="15sp"
                             android:textStyle="bold" />
@@ -149,6 +151,7 @@
                             android:layout_marginTop="14dp"
                             android:layout_marginBottom="14dp"
                             android:text="item total"
+                            android:visibility="gone"
                             android:textColor="@color/black"
                             android:textIsSelectable="true"
                             android:textSize="15sp"
@@ -156,7 +159,8 @@
 
                     </RelativeLayout>
 
-                    <View style="@style/Divider" />
+                    <View style="@style/Divider"
+                        android:visibility="gone"/>
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -302,6 +306,17 @@
                 android:background="@drawable/gradient"
                 android:text="Return to Homepage"
                 android:visibility="gone"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_rate_playstore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/gradient"
+                android:text="Rate us on Google play"
                 android:textColor="@color/white" />
 
             <Button

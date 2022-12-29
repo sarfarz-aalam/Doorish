@@ -27,6 +27,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import android.os.Vibrator;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -135,7 +138,7 @@ public class LandingPage extends AppCompatActivity implements AdapterView.OnItem
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_wishlist, R.id.nav_slideshow, R.id.nav_city_orders,
-                R.id.nav_tools, R.id.nav_city, R.id.nav_offline_requests, R.id.nav_video, R.id.nav_refer_and_earn, R.id.cartFragmentNav, R.id.nav_myprofile)
+                R.id.nav_tools, R.id.nav_city, R.id.nav_offline_requests, R.id.nav_video, R.id.nav_refer_and_earn, R.id.cartFragmentNav, R.id.nav_myprofile, R.id.nav_wallet_statement, R.id.nav_coupon_and_reward)
                 .setDrawerLayout(drawer)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -264,8 +267,9 @@ public class LandingPage extends AppCompatActivity implements AdapterView.OnItem
 
 
         MenuItem cartTotalMenu = menu.findItem(R.id.cart_total_price);
-        String cartTotal =  CommonVariables.rupeeSymbol + String.format("%.2f", totalPriceCart);
+        String cartTotal = "Total\n" + CommonVariables.rupeeSymbol + String.format("%.2f", totalPriceCart);
         cartTotalMenu.setTitle(cartTotal);
+
 
 
 
@@ -276,6 +280,18 @@ public class LandingPage extends AppCompatActivity implements AdapterView.OnItem
         MenuItem menuItemLogout = menu.findItem(R.id.btnLogout);
         if (CommonVariables.loggedInUserDetails == null) {
             menuItemLogout.setTitle("Login");
+        }
+
+        for(int i = 0; i < menu.size(); i++) {
+            MenuItem item = menu.getItem(i);
+            if(item.getItemId() == R.id.cart_total_price){
+                SpannableString spanString = new SpannableString(menu.getItem(i).getTitle().toString());
+                int end = spanString.length();
+                spanString.setSpan(new RelativeSizeSpan(0.9f), 0, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                item.setTitle(spanString);
+            }
+
         }
 
         return true;
@@ -469,7 +485,8 @@ public class LandingPage extends AppCompatActivity implements AdapterView.OnItem
                                                         if (buy_by_weight)
                                                             CommonVariables.priceTotalCart += (weight_in_gram * product.price_per_gram) * obCart.Qty;
                                                         else
-                                                            CommonVariables.priceTotalCart += getOfferPrice(obCart, product);
+                                                            // trying fix
+                                                            CommonVariables.priceTotalCart += getOfferPrice(obCart, obCart.product) * obCart.Qty;
                                                         Log.d("price_total_cart", "price " + CommonVariables.priceTotalCart);
 
                                                         if (!CommonVariables.cartlist.contains(obCart))
@@ -515,8 +532,12 @@ public class LandingPage extends AppCompatActivity implements AdapterView.OnItem
                     sVariants += "<b>" + key + ":  " + "</b>" + value + "<br/>";
 
                     if(product.variant_pricing){
+
+
                         if(product.variant_pricing_attribute.trim().equals(key.trim())){
-                            offerPrice =  product.variant_price_map.get(value.trim());
+
+                                offerPrice =  product.variant_price_map.get(value.trim());
+                                
                         }
                     }
                 }

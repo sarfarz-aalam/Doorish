@@ -15,7 +15,6 @@
         android:id="@+id/cart_total_price"
         android:title="0"
         android:orderInCategory="1"
-
         app:showAsAction="always" />
 
 <!--    <item-->

@@ -1,384 +1,417 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ShowCartFragment">
+    android:layout_height="match_parent">
 
-    <ProgressBar
-        android:id="@+id/progress_bar_cart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:translationZ="90dp"
-        android:layout_gravity="center"/>
-
-    <RelativeLayout
-        android:id="@+id/layout_cart_empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|center_vertical"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/txt_cart_empty_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_cart_empty"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/your_cart_is_empty_2"
-            android:textAlignment="center"
-            android:textSize="22sp" />
-
-        <TextView
-            android:id="@+id/txt_cart_empty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/img_cart_empty"
-            android:layout_marginTop="0dp"
-            android:layout_centerHorizontal="true"
-            android:text="@string/your_cart_is_empty_1"
-            android:textAlignment="center"
-            android:textSize="22sp" />
-
-        <Button
-            android:id="@+id/btn_shop_now"
-            android:layout_width="120dp"
-            android:layout_height="42dp"
-            android:text="Shop now"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:textColor="@color/white"
-            android:layout_below="@id/txt_cart_empty_2"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/gradient" />
-
-
-
-        <ImageView
-            android:id="@+id/img_cart_empty"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
-            android:paddingEnd="10dp"
-            android:src="@drawable/ic_empty_cart_new"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
-
-
-
-    <LinearLayout
-        android:id="@+id/cart_layout"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        tools:context=".ShowCartFragment">
 
-        <LinearLayout
-            android:id="@+id/cartHeaders"
-            android:layout_width="match_parent"
+
+        <ProgressBar
+            android:id="@+id/progress_bar_cart"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:orientation="vertical">
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:translationZ="90dp"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/layout_cart_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:visibility="gone">
 
             <TextView
+                android:id="@+id/txt_cart_empty_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Payment Details"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"/>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="14dp">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-
-
-                    android:text="Item Total"
-
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtProductCharges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text=""
-                    android:layout_alignParentEnd="true"
-                    android:textSize="15sp"
-                    android:textColor="@color/flat_black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <View style="@style/Divider"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="14dp">
-
-
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Discount"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-               />
-
-                <TextView
-                    android:id="@+id/txt_discount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text=""
-                    android:layout_alignParentEnd="true"
-                    android:textSize="15sp"
-                    android:textColor="@color/flat_black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <View style="@style/Divider"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:layout_marginBottom="14dp">
-
-
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-
-                    android:text="Wallet Money Used"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    />
-
-                <TextView
-                    android:id="@+id/txt_wallet_money_used"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:text=""
-                    android:layout_alignParentEnd="true"
-                    android:textSize="15sp"
-                    android:textColor="@color/flat_black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <View style="@style/Divider"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-
-                >
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="Delivery Charges "
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                     />
-
-
-                <TextView
-                    android:id="@+id/txtDeliveryChargres"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="15sp"
-                    android:textColor="@color/mrp_color"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/txtTip"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="14dp"
-                android:textColor="@color/price_green"
-                android:visibility="gone"
-                android:textSize="@dimen/text_size_small"
-                 />
-
-            <View
-              style="@style/Divider"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="14dp"
-                    android:text="Total Amount Payable "
-                    android:textColor="@color/flat_black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txtNetPayable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="16sp"
-                    android:textColor="@color/flat_black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_light_green"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="6dp"
-                    android:text="Total Savings"
-                    android:textSize="16sp"
-                    android:textColor="@color/price_green"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_savings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:layout_centerVertical="true"
-
-                    android:layout_alignParentEnd="true"
-                    android:text=""
-                    android:textSize="16sp"
-                    android:textColor="@color/price_green"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_marginTop="14dp" style="@style/Divider"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Use Wallet Balance"
-                android:visibility="visible"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="4dp"
-                android:id="@+id/chkUseWalletMoney" />
-
-            <TextView
-                android:id="@+id/txtWalletMoney"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_below="@id/txt_cart_empty"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/your_cart_is_empty_2"
                 android:textAlignment="center"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible"
-                android:textSize="14sp"
-                android:text="Wallet Money: 0 " />
+                android:textSize="22sp" />
 
-
+            <TextView
+                android:id="@+id/txt_cart_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_cart_empty"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="0dp"
+                android:text="@string/your_cart_is_empty_1"
+                android:textAlignment="center"
+                android:textSize="22sp" />
 
             <Button
-                android:id="@+id/btnProceedtoCheckout"
+                android:id="@+id/btn_shop_now"
+                android:layout_width="120dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/txt_cart_empty_2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/gradient"
+                android:text="Shop now"
+                android:textColor="@color/white" />
+
+
+            <ImageView
+                android:id="@+id/img_cart_empty"
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_centerHorizontal="true"
+                android:paddingEnd="10dp"
+                android:src="@drawable/ic_empty_cart_new" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cart_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/cartHeaders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/gradient"
-                android:textColor="@color/white"
-                android:text="Proceed to Checkout" />
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
 
-            <!--            <Button-->
-            <!--                android:id="@+id/btnEmptyCart"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="10dp"-->
-            <!--                android:text="Empty Cart"-->
-            <!--                android:background="#eb8634"-->
-            <!--                />-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Payment Details"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+
+
+                        android:text="Item Total"
+
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtProductCharges"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text=""
+                        android:textColor="@color/flat_black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Discount"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_discount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text=""
+                        android:textColor="@color/flat_black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+
+                        android:text="Wallet Money Used"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_wallet_money_used"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text=""
+                        android:textColor="@color/flat_black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+
+                    >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Delivery Charges "
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txtDeliveryChargres"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="12dp"
+                        android:text=""
+                        android:textColor="@color/mrp_color"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtTip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="14dp"
+                    android:textColor="@color/price_green"
+                    android:textSize="@dimen/text_size_small"
+                    android:visibility="gone" />
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="14dp"
+                        android:text="Total Amount Payable "
+                        android:textColor="@color/flat_black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtNetPayable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="12dp"
+                        android:text=""
+                        android:textColor="@color/flat_black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/bg_light_green">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="6dp"
+                        android:text="Total Savings"
+                        android:textColor="@color/price_green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_savings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+
+                        android:layout_marginEnd="6dp"
+                        android:text=""
+                        android:textColor="@color/price_green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/Divider"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="12dp" />
+
+                <CheckBox
+                    android:id="@+id/chkUseWalletMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Use Wallet Balance (10% OFF)"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtWalletMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Wallet Money: 0 "
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:id="@+id/edit_text_coupon"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:hint="Enter coupon code"/>
+
+                    <Button
+                        android:id="@+id/btn_apply_coupon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Apply"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignTop="@id/edit_text_coupon"
+                        android:layout_alignBottom="@id/edit_text_coupon"
+                        android:layout_marginEnd="12dp"/>
+
+                </RelativeLayout>
+
+
+                <Button
+                    android:id="@+id/btnProceedtoCheckout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/gradient"
+                    android:text="Proceed to Checkout"
+                    android:textColor="@color/white" />
+                <Button
+                    android:id="@+id/btnShopMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/gradient"
+                    android:text="Shop More"
+                    android:textColor="@color/white" />
+
+                <!--            <Button-->
+                <!--                android:id="@+id/btnEmptyCart"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginTop="10dp"-->
+                <!--                android:text="Empty Cart"-->
+                <!--                android:background="#eb8634"-->
+                <!--                />-->
+
+            </LinearLayout>
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:src="@drawable/loading" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cartRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/txtCartEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:text="Cart Empty"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="gone" />
         </LinearLayout>
-
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/gifView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/loading"
-            android:layout_gravity="center_horizontal|center_vertical"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cartRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/txtCartEmpty"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:text="Cart Empty"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:visibility="gone" />
-    </LinearLayout>
-
-
-</FrameLayout>
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

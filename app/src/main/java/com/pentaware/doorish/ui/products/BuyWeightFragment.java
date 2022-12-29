@@ -29,6 +29,7 @@ public class BuyWeightFragment extends Fragment {
     private Product mProduct;
     private TextView txtNetAmount;
     private TextView txtMaxWeight;
+    private EditText editTextNetAmount;
 
     public static BuyWeightFragment newInstance(Product product) {
 
@@ -45,6 +46,8 @@ public class BuyWeightFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_buy_weight, container, false);
         txtNetAmount = view.findViewById(R.id.txtProductCharges);
+        editTextNetAmount = view.findViewById(R.id.edit_text_net_amount);
+        editTextNetAmount.setFocusable(false);
         loadUI(view);
 
         return view;
@@ -93,12 +96,18 @@ public class BuyWeightFragment extends Fragment {
                         String max = "Maximum weight allowed is " + CommonVariables.maxWeight + "gm OR "  + CommonVariables.maxWeight/1000 + "kg";
                         Toast.makeText(getContext(), max, Toast.LENGTH_SHORT).show();
                         editTextWeight.setText(sText.substring(0, sText.length() - 1));
-                        txtNetAmount.setText("");
+                        editTextWeight.setSelection(editTextWeight.getText().length());
+
+                        //txtNetAmount.setText("");
+//                        editTextNetAmount.setText("");
+                        sText = editTextWeight.getText().toString();
+                        setPrice(sText);
                     }
 
                     else
                     setPrice(sText);
                 }
+                else editTextNetAmount.setText("");
 
             }
         });
@@ -132,6 +141,7 @@ public class BuyWeightFragment extends Fragment {
     private void setPrice(String strPrice) {
         double netAmount = Double.parseDouble(strPrice) * mProduct.price_per_gram;
         mProduct.weight_in_gram = Double.parseDouble(strPrice);
-        txtNetAmount.setText(CommonVariables.rupeeSymbol + String.format("%.2f", netAmount));
+       // txtNetAmount.setText(CommonVariables.rupeeSymbol + String.format("%.2f", netAmount));
+        editTextNetAmount.setText(String.format("%.1f", netAmount));
     }
 }

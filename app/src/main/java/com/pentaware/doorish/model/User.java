@@ -35,6 +35,8 @@ public class User implements Serializable {
 
     public List<Address> AddressList = new ArrayList<>();
 
+    public List<String> coupon_used = new ArrayList<>();
+
     public String fcm;
 
     public double points;

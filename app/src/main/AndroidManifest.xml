@@ -30,34 +30,36 @@
         <activity
             android:name="com.pentaware.HostFragmentActivity"
             android:exported="false" />
-        <activity android:name=".OrderPlacedActivity"
-            android:exported="false"/>
-        <activity android:name=".VerifyOtpActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".OrderPlacedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerifyOtpActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.address.ChangeDeliveryAddressActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ShowPrivacyPolicyActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".BlockApkActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".TrackOrderActivity"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".IfUserNotActive"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ReferAndEarn"
-            android:screenOrientation="portrait"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".MyMessagingService"
@@ -70,23 +72,26 @@
 
         <activity
             android:name=".codPopup"
-            android:screenOrientation="portrait"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.PopupTheme" />
-        <activity android:name=".OfflineRequestListing"
-            android:exported="false"/>
+        <activity
+            android:name=".OfflineRequestListing"
+            android:exported="false" />
         <activity
             android:name=".PostYOurRequirement"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".CityOrdersListing"
-            android:exported="false"/>
-        <activity android:name=".PrevNext"
-            android:exported="false"/>
+        <activity
+            android:name=".CityOrdersListing"
+            android:exported="false" />
+        <activity
+            android:name=".PrevNext"
+            android:exported="false" />
         <activity
             android:name=".PopupVersion"
-            android:screenOrientation="portrait"
             android:exported="false"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.PopupTheme" />
         <activity
             android:name=".RegisterUser"
@@ -98,12 +103,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Splash"
-
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
             android:label="@string/app_title"
             android:screenOrientation="portrait"
-
-            android:exported="true"
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -111,30 +114,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".YoutubePlayerActivity"
-            android:exported="false"/>
-        <activity android:name=".VideoListing"
-            android:exported="false"/>
-        <activity android:name=".OrderListing"
-            android:exported="false"/>
+        <activity
+            android:name=".YoutubePlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VideoListing"
+            android:exported="false" />
+        <activity
+            android:name=".OrderListing"
+            android:exported="false" />
         <activity
             android:name=".UserOtherDetails"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".AddressListing"
-            android:exported="false"/>
+        <activity
+            android:name=".AddressListing"
+            android:exported="false" />
         <activity
             android:name=".CheckoutActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
-        <activity android:name=".CartListing"
-            android:exported="false"/>
-        <activity android:name=".ReviewListing"
-            android:exported="false"/>
-        <activity android:name=".ShopListing"
-            android:exported="false"/>
-        <activity android:name=".ProductListing"
-            android:exported="false"/>
+        <activity
+            android:name=".CartListing"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewListing"
+            android:exported="false" />
+        <activity
+            android:name=".ShopListing"
+            android:exported="false" />
+        <activity
+            android:name=".ProductListing"
+            android:exported="false" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:exported="false"
@@ -146,11 +157,12 @@
             android:theme="@style/AppTheme.PopupTheme" />
         <activity
             android:name=".LandingPage"
+            android:exported="false"
             android:label="@string/title_activity_landing_page"
             android:screenOrientation="portrait"
-            android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="false">
 
             <!-- <intent-filter> -->
@@ -169,8 +181,8 @@
         <activity
             android:name="com.razorpay.CheckoutActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:theme="@style/CheckoutTheme"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/CheckoutTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -180,15 +192,14 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.razorpay.RzpTokenReceiver"
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
             android:exported="true"
             android:permission="android.permission.INTERNET">
             <intent-filter>
                 <action android:name="rzp.device_token.share" />
             </intent-filter>
         </receiver>
-
-
     </application>
 
 </manifest>

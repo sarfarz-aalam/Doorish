@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -36,7 +37,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 import com.pentaware.doorish.model.Cart;
+import com.pentaware.doorish.model.Coupon;
 import com.pentaware.doorish.model.Product;
 import com.pentaware.doorish.model.User;
 import com.pentaware.doorish.ui.orders.MyOrdersFragment;
@@ -66,6 +69,7 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
     private GifImageView gifImageView;
     double iTotalAmont = 0;
     TextView txtWalletMoney;
+    Button btnApplyCoupon;
     private Button btnShopNow;
     double iProductCharges = 0;
     double iMrpCharges = 0;
@@ -106,6 +110,10 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
         txtDiscount = mView.findViewById(R.id.txt_discount);
         txtTotalSavings = mView.findViewById(R.id.txt_savings);
         txtTotalSavings = mView.findViewById(R.id.txt_savings);
+        EditText editTextCoupon = mView.findViewById(R.id.edit_text_coupon);
+        btnApplyCoupon = mView.findViewById(R.id.btn_apply_coupon);
+
+        Button btnShopMore = mView.findViewById(R.id.btnShopMore);
 
         progressBarCart = mView.findViewById(R.id.progress_bar_cart);
 
@@ -148,8 +156,104 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
             }
         });
 
+        btnShopMore.setOnClickListener(view -> {
+            Fragment newFragment = new ProductFragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            Bundle bund1 = new Bundle();
+            bund1.putString("category", "All");
+            newFragment.setArguments(bund1);
+
+            transaction.hide(CartFragmentNav.this);
+            transaction.replace(R.id.nav_host_fragment, newFragment);
+
+            transaction.addToBackStack(null);
+            transaction.commit();
+        });
+
+        btnApplyCoupon.setOnClickListener(view -> {
+            progressBarCart.setVisibility(View.VISIBLE);
+            String couponCode = editTextCoupon.getText().toString();
+            if(!couponCode.equals("")){
+                db.collection("coupons").whereEqualTo("coupon_name", couponCode).whereEqualTo("active", true).get().addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        if(task.getResult() != null){
+                            Coupon coupon = new Coupon();
+                            QuerySnapshot snapshot = task.getResult();
+                            for (DocumentSnapshot couponDoc: snapshot){
+                                coupon = couponDoc.toObject(Coupon.class);
+                            }
+
+                            if(coupon != null){
+                                if(coupon.coupon_name != null){
+                                    if(coupon.coupon_name.equals(couponCode)){
+                                        Toast.makeText(getContext(), "Coupon code applied successfully", Toast.LENGTH_SHORT).show();
+                                        applyCoupon(coupon);
+//                                        if(!CommonVariables.loggedInUserDetails.coupon_used.contains(coupon.coupon_name)){
+//                                            CommonVariables.loggedInUserDetails.coupon_used.add(coupon.coupon_name);
+//                                            Coupon finalCoupon = coupon;
+//                                            db.collection("users").document(CommonVariables.loggedInUserDetails.customer_id).update("coupon_used", CommonVariables.loggedInUserDetails.coupon_used).
+//                                                    addOnCompleteListener(task1 -> {
+//                                                        Toast.makeText(getContext(), "Coupon code applied successfully", Toast.LENGTH_SHORT).show();
+//                                                        applyCoupon(finalCoupon);
+//                                                    });
+//
+//                                        }
+                                        //else Toast.makeText(getContext(), "Coupon code already used", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else Toast.makeText(getContext(), "Enter valid coupon code", Toast.LENGTH_SHORT).show();
+                                }
+                                else Toast.makeText(getContext(), "Enter valid coupon code", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    }
+                });
+            }
+            else{
+                Toast.makeText(getContext(), "Enter valid coupon code", Toast.LENGTH_SHORT).show();
+            }
+
+            progressBarCart.setVisibility(View.GONE);
+        });
+
 
         return mView;
+    }
+
+    public void applyCoupon(Coupon coupon){
+        double amount = iTotalAmont - CommonVariables.deliveryCharges;
+        if(coupon.coupon_type.equals("Percent")){
+            double discount =  ((coupon.coupon_disount / 100f) * amount);
+            Log.d("coupon_used", "discount: " + discount + " itotalamount: " + iTotalAmont) ;
+            if(discount <= iTotalAmont){
+                iTotalAmont = iTotalAmont - discount;
+                Log.d("coupon_applied",  "iTotal: " + iTotalAmont + "net: " + amount + " dicount: " + discount);
+            }
+
+            else iTotalAmont = 0;
+            Log.d("coupon_applied", "discount: " + discount + "net: " + mNetPayable);
+
+        }
+        else {
+            if(iTotalAmont > 99){
+                if(coupon.coupon_disount <= iTotalAmont){
+                    iTotalAmont = iTotalAmont - coupon.coupon_disount;
+                }
+                else iTotalAmont = 0;
+            }
+            else Toast.makeText(getContext(), "Minimun order amount should be 100", Toast.LENGTH_SHORT).show();
+
+        }
+
+        btnApplyCoupon.setText("Applied");
+//        btnApplyCoupon.setBackgroundColor(getResources().getColor(R.color.price_green));
+//        btnApplyCoupon.setTextColor(getResources().getColor(R.color.white));
+        btnApplyCoupon.setEnabled(false);
+        mNetPayable = iTotalAmont;
+        mOriginalNetPayable = iTotalAmont;
+        originalTotalAmount = iTotalAmont;
+        txtNetPayable.setText(CommonVariables.rupeeSymbol + String.format("%.2f", iTotalAmont));
     }
 
     private void hideUI() {
@@ -268,7 +372,12 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
             //btnCOD.setVisibility(View.GONE);
 
             //when wallet money available is more than net payable
-            if (mAvailableWalletMoney >= mNetPayable) {
+
+            //int k = (int)(120*(50.0f/100.0f));
+
+            // 10 percent wallet money limit
+            double usableWalletMoney = mAvailableWalletMoney / 10;
+            if (usableWalletMoney >= mNetPayable) {
                 mWalletMoneyUsed = mNetPayable;
                 //1 rupee = 8 points
                 mRemainingWalletPoints = (int) CommonVariables.loggedInUserDetails.points - (mNetPayable * CommonVariables.NumberOfPointsInOneRupee);
@@ -276,17 +385,17 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
 //                btnPrepaid.setText("Place Order");
                 mNetPayable = 0;
             } else {
-                mWalletMoneyUsed = mAvailableWalletMoney;
+                mWalletMoneyUsed = usableWalletMoney;
                 //all points are consumed
                 double dPointsConsumed = CommonVariables.loggedInUserDetails.points;
-                mRemainingWalletPoints = 0;
-                mNetPayable = mNetPayable - mWalletMoneyUsed;
+                mRemainingWalletPoints = CommonVariables.loggedInUserDetails.points - usableWalletMoney;
+                mNetPayable = mNetPayable - usableWalletMoney;
 
             }
 
             String sNetPayable = CommonVariables.rupeeSymbol + CommonMethods.formatCurrency(mNetPayable);
             txtNetPayable.setText(sNetPayable);
-            double iReaminingInWallet = mAvailableWalletMoney - mWalletMoneyUsed;
+            double iReaminingInWallet = mAvailableWalletMoney - usableWalletMoney;
             String sAVailable = "Wallet Balance: " + CommonVariables.rupeeSymbol + CommonMethods.formatCurrency(iReaminingInWallet);
             txtWalletMoney.setText(sAVailable);
 
@@ -512,8 +621,21 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
                     sVariants += "<b>" + key + ":  " + "</b>" + value + "<br/>";
 
                     if(product.variant_pricing){
+
                         if(product.variant_pricing_attribute.trim().equals(key.trim())){
-                            offerPrice =  product.variant_price_map.get(value.trim());
+                            try {
+                                if(!product.variant_price_map.containsKey(value.trim())){
+                                    Log.d("variant_error", "wrong variant");
+                                    CommonVariables.cartlist.remove(cart);
+                                }
+                                else {
+                                    offerPrice =  product.variant_price_map.get(value.trim());
+                                }
+
+                            }
+                            catch (Exception e){
+                                Log.d("variant_error", product.Product_Id + " " + value.trim());
+                            }
                         }
                     }
                 }

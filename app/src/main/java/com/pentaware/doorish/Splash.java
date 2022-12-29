@@ -107,8 +107,18 @@ public class Splash extends AppCompatActivity {
                         CommonVariables.loggedInUserDetails = document.toObject(User.class);
                         getAndUpdateFCMToken();
                         setAddress();
+                        db.collection("online_orders").whereEqualTo("customer_id", CommonVariables.loggedInUserDetails.customer_id).
+                                get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                QuerySnapshot snapshots = task.getResult();
+                                if(snapshots != null && snapshots.size() > 0)
+                                    CommonVariables.user_orders = snapshots.size();
+                                LaunchLandingPage();
+                            }
+                        });
                         //  LoadAddresses();
-                        LaunchLandingPage();
+
                     } else {
                         LaunchOtherDetailsActivity();
                     }
@@ -252,6 +262,7 @@ public class Splash extends AppCompatActivity {
                 });
 
     }
+
 
     private void checkIfUserActive() {
         db.collection("users").document(CommonVariables.m_sFirebaseUserId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

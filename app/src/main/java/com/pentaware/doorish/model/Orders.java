@@ -146,5 +146,6 @@ public class Orders implements Serializable {
 
     public String referred_user_fcm = null;
 
+    public int order_no = 0;
     //public HashMap<String, String> product_variants = new HashMap<>();
 }

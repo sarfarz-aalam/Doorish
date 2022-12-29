@@ -16,7 +16,7 @@
 
     <style name="ActionButtonStyle" parent="Widget.AppCompat.ActionButton">
         <item name="android:minWidth">0dip</item>
-        <item name="android:maxWidth">70dip</item>
+        <item name="android:maxWidth">100dp</item>
         <item name="android:paddingLeft">0dip</item>
         <item name="android:paddingRight">0dip</item>
         <item name="android:textAppearance">@style/menu_text_style</item>

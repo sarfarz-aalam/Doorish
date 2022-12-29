@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -52,6 +54,7 @@ public class OrderPlacedActivity extends AppCompatActivity {
         Button btnGoToHomepage = findViewById(R.id.btn_goto_homepage);
         Button btnOrderDetail = findViewById(R.id.btn_order_detail);
         Button btnGiveFeedback = findViewById(R.id.btn_give_feedback);
+        Button btnRatePlayStore = findViewById(R.id.btn_rate_playstore);
         ImageView imgClose = findViewById(R.id.img_close);
 
         orderId = getIntent().getStringExtra("order_id");
@@ -77,6 +80,15 @@ public class OrderPlacedActivity extends AppCompatActivity {
 
         btnGoToHomepage.setOnClickListener(view -> {
 
+        });
+
+        btnRatePlayStore.setOnClickListener(view -> {
+            try{
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id="+getPackageName())));
+            }
+            catch (ActivityNotFoundException e){
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id="+getPackageName())));
+            }
         });
 
         btnOrderDetail.setOnClickListener(view -> {

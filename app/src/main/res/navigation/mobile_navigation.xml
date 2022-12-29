@@ -498,6 +498,16 @@
             android:name="Product"
             app:argType="com.pentaware.doorish.model.Product" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_wallet_statement"
+        android:name="com.pentaware.doorish.ui.wallet.WalletStatementFragment"
+        android:label="Wallet Statement"
+        tools:layout="@layout/fragment_wallet_statement" />
+    <fragment
+        android:id="@+id/nav_coupon_and_reward"
+        android:name="com.pentaware.doorish.ui.wallet.CouponAndRewardFragment"
+        android:label="Coupons and Rewards"
+        tools:layout="@layout/fragment_coupon_and_reward" />
 
 
 </navigation>

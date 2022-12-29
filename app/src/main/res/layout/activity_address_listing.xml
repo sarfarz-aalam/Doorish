@@ -13,20 +13,21 @@
         style="@style/CardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cardview_shadow_start_color"
+        android:background="@drawable/bg_light_grey"
         android:baselineAligned="false"
         android:elevation="10dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_btn_bg">
+            android:background="@drawable/bg_light_grey">
 
 
             <RadioButton
                 android:id="@+id/radio_select_address"
                 android:layout_width="wrap_content"
                 android:layout_margin="4dp"
+                android:buttonTint="@color/colorPrimary"
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
@@ -175,7 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:theme="@style/Theme.MaterialComponents.Light"
-                    android:backgroundTint="@color/colorRed"
+                    android:backgroundTint="@color/price_green"
                     app:cardCornerRadius="6dp">
 
                     <TextView

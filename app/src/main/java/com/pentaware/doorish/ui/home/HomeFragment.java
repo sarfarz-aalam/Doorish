@@ -821,6 +821,8 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             }
         });
 
+        Log.d("user_orders", "count = " + CommonVariables.user_orders);
+
 
         if((getActivity()) != null )
         //((AppCompatActivity)getActivity()).getActionBar().setElevation(0);

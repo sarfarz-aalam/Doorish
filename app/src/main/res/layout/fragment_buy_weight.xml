@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryLight"
+        android:backgroundTint="@color/colorPrimary"
         app:cardCornerRadius="8dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
@@ -75,7 +75,7 @@
         <RatingBar
             android:id="@+id/ratingBar"
             style="?android:attr/ratingBarStyle"
-            android:layout_width="245dp"
+            android:layout_width="300dp"
             android:layout_height="40dp"
             android:layout_marginTop="6dp"
             android:isIndicator="true"
@@ -157,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_toStartOf="@+id/txtProductCharges"
+            android:layout_toStartOf="@+id/edit_text_net_amount"
             android:layout_marginTop="12dp"
             android:text="Net Amount: "
             android:paddingVertical="4dp"
@@ -175,8 +175,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:src="@drawable/ic_info"/>
 
             <TextView
@@ -192,6 +192,22 @@
 
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/edit_text_net_amount"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/black_line_edittext_bg"
+            android:layout_alignParentEnd="true"
+            android:inputType="number|numberDecimal"
+            android:padding="2dp"
+            android:layout_marginEnd="12dp"
+            android:layout_alignTop="@+id/txt_amount_ph"
+            android:layout_marginStart="4dp"
+            android:layout_alignBottom="@id/txt_amount_ph"
+            android:layout_below="@id/divider" />
+
+
+
         <TextView
             android:id="@+id/txtProductCharges"
             android:layout_width="wrap_content"
@@ -199,6 +215,7 @@
             android:layout_marginEnd="12dp"
             android:layout_marginStart="4dp"
             android:text=""
+            android:visibility="gone"
             android:layout_below="@+id/txt_desc"
             android:paddingVertical="4dp"
             android:layout_alignParentEnd="true"

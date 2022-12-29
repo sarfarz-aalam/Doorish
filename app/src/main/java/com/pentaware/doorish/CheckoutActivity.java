@@ -77,6 +77,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
 
     private boolean TEST_MODE = true;
 
+    String sOrderId = "";
+
 
     private String razorPayOrderId = null;
     private double mNetPayable = 0;
@@ -92,6 +94,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
     private String MyPREFERENCES = "MyPrefs";
     private String orderId;
     SharedPreferences sharedPreferences;
+
+    private double order_net_amount = 0;
 
     private double mOriginalAvailableWalletMoney = 0;
     private double mOriginalNetPayable = 0;
@@ -153,6 +157,10 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
 
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        String id_start = CommonVariables.loggedInUserDetails.Name.substring(0, 2).toUpperCase();
+        long id_end = System.currentTimeMillis()/1000;
+        sOrderId = id_start.trim() + id_end;
 
 
         if (getIntent() != null) {
@@ -444,7 +452,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
         //        //if wallet money was used update the balance points first
         if (mWalletMoneyUsed > 0) {
             double points = mWalletMoneyUsed * CommonVariables.NumberOfPointsInOneRupee;
-            CommonMethods.debitPoints((points));
+            Log.d("wallet_money_test", "wallet_money used process cod: " + points);
+            CommonMethods.debitPoints(points, sOrderId);
         }
 
 
@@ -512,7 +521,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
 //        //if wallet money was used update the balance points first
         if (mWalletMoneyUsed > 0) {
             double points = mWalletMoneyUsed * CommonVariables.NumberOfPointsInOneRupee;
-            CommonMethods.debitPoints((points));
+            CommonMethods.debitPoints(points, sOrderId);
+            Log.d("wallet_money_test", "wallet_money used process predpaid: " + points);
         }
 
 
@@ -611,19 +621,19 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
 
         for (CheckoutCart checkoutCart : lstCheckoutCart) {
 
-            String id_start = CommonVariables.loggedInUserDetails.Name.substring(0, 2).toUpperCase();
-            long id_end = System.currentTimeMillis()/1000;
-
-
-            //String sOrderId = UUID.randomUUID().toString();
-            String sOrderId = id_start.trim() + id_end;
+//            String id_start = CommonVariables.loggedInUserDetails.Name.substring(0, 2).toUpperCase();
+//            long id_end = System.currentTimeMillis()/1000;
+//
+//
+//            //String sOrderId = UUID.randomUUID().toString();
+//            String sOrderId = id_start.trim() + id_end;
 
             orderIdList.add(sOrderId);
 
             checkoutCart.orderId = sOrderId;
             DocumentReference docOrder = db.collection("online_orders").document(sOrderId);
 
-            CommonVariables.paymentStatus = order.COD;
+            CommonVariables.paymentStatus = cod;
 
             order.COD = cod;
             order.offline_order = false;
@@ -673,6 +683,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
 
             order.total_return_amount = 0;
 
+            order.order_no = CommonVariables.user_orders + 1;
+
             Log.d("value_here", String.valueOf(anytimeSlotBonus));
 
 
@@ -714,6 +726,9 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
                 Log.d("roundPrice", String.valueOf(roundPrice));
 
                 order.product_offer_prices.add(Double.parseDouble(str_price));
+
+                // net order amount
+                order_net_amount += Double.parseDouble(str_price);
                 order.product_mrp_list.add(Double.parseDouble(str_mrp));
 
 
@@ -1055,6 +1070,10 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
     }
 
     private void launchOrderPlaced() {
+
+        CommonVariables.user_orders++;
+
+        Log.d("user_orders", "cashback credited for " + order_net_amount);
         CommonVariables.buyNowOption = false;
         Intent intent = new Intent(CheckoutActivity.this, OrderPlacedActivity.class);
         intent.putExtra("order_id", orderId);
@@ -1062,6 +1081,22 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
         intent.putExtra("page", "order_created");
 
         startActivity(intent);
+
+        // credit the cashback for first 3 orders
+//        int cashback = 0;
+//        if(CommonVariables.user_orders < 3){
+//            if(order_net_amount > 200)
+//                cashback = 200;
+//            else cashback = Integer.parseInt(String.valueOf(order_net_amount));
+//
+//            db.collection("users").document(CommonVariables.loggedInUserDetails.customer_id).update("points", FieldValue.increment(cashback))
+//                    .addOnCompleteListener(task -> {
+//
+//
+//                    });
+//        }
+
+
     }
 
     void UseWallet(boolean use) {

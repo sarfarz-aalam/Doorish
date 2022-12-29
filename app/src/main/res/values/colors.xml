@@ -24,6 +24,7 @@
 
     <color name="colorPrimary">#eb6b34</color>
     <color name="colorPrimaryLight">#F48F63</color>
+    <color name="color_light_primary">#FFE8DE</color>
     <color name="colorPrimaryDark">#eb6b34</color>
     <color name="disabled">#B8B8B8</color>
 
