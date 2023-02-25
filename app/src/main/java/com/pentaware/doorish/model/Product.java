@@ -17,6 +17,7 @@ public class Product implements Serializable {
   public float Offer_Price;
 
   public float price_per_gram;
+  public float price_per_gram;
 
   public double weight_in_gram = 0;
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,14 +19,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.pentaware.doorish.AdapterCouponAndRewards;
 import com.pentaware.doorish.AdapterWalletStatement;
 import com.pentaware.doorish.BaseFragment;
+import com.pentaware.doorish.CartFragmentNav;
+import com.pentaware.doorish.CommonVariables;
+import com.pentaware.doorish.ICoupon;
 import com.pentaware.doorish.R;
 import com.pentaware.doorish.model.Coupon;
 import com.pentaware.doorish.model.WalletStatement;
+import com.pentaware.doorish.ui.products.ProductFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CouponAndRewardFragment extends BaseFragment {
+public class CouponAndRewardFragment extends BaseFragment implements ICoupon {
 
     private RecyclerView recyclerViewCoupons;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -61,7 +66,26 @@ public class CouponAndRewardFragment extends BaseFragment {
 
     private void setUpRecyclerView() {
         recyclerViewCoupons.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        adapterCouponAndRewards = new AdapterCouponAndRewards(getContext(), couponList);
+        adapterCouponAndRewards = new AdapterCouponAndRewards(getContext(), couponList, CouponAndRewardFragment.this);
         recyclerViewCoupons.setAdapter(adapterCouponAndRewards);
+    }
+
+    @Override
+    public void applyCoupon(Coupon coupon) {
+        //Coupon coupon = couponList.get(position);
+        CommonVariables.selected_coupon = coupon;
+
+//        Fragment newFragment = new CartFragmentNav();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//        transaction.hide(CouponAndRewardFragment.this);
+//        transaction.replace(R.id.nav_host_fragment, newFragment);
+//
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+        //getActivity().getFragmentManager().popBackStack();
+
+        getActivity().onBackPressed();
+
     }
 }

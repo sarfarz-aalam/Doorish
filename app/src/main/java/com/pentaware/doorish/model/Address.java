@@ -28,4 +28,8 @@ public class Address implements Serializable {
 
     public String State;
 
+    public double user_loc_lat = 0;
+
+    public double user_loc_long = 0;
+
 }

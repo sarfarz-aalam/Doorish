@@ -3,10 +3,6 @@ package com.pentaware.doorish;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +21,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -50,7 +45,6 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pentaware.doorish.model.User;
-import com.pentaware.doorish.ui.address.AddressFragment;
 import com.pentaware.doorish.ui.address.ChangeDeliveryAddressActivity;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
@@ -58,7 +52,6 @@ import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
 
 import org.joda.time.DateTime;
-import org.joda.time.Instant;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -69,7 +62,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 public class CheckoutActivity extends AppCompatActivity implements PaymentResultListener, DatePickerListener, IDeliverySlotOperations {
 
@@ -660,7 +652,7 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
             order.prepaid_cancellation_processed = false;
             order.settlement_done = false;
             order.settlement_date = null;
-            order.delivery_agent_id = null;
+            order.delivery_partner_id = null;
             order.pickup_rejection_reason = null;
             order.pickup_status = null;
             order.delivery_charges = mDeliveryCharges;
@@ -680,6 +672,8 @@ public class CheckoutActivity extends AppCompatActivity implements PaymentResult
             order.Pincode = CommonVariables.deliveryAddress.Pincode;
             order.City = CommonVariables.deliveryAddress.City;
             order.State = CommonVariables.deliveryAddress.State;
+            order.user_loc_lat = CommonVariables.deliveryAddress.user_loc_lat;
+            order.user_loc_long = CommonVariables.deliveryAddress.user_loc_long;
 
             order.total_return_amount = 0;
 

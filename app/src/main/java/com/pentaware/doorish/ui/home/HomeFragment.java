@@ -22,13 +22,19 @@ import com.bumptech.glide.Glide;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.firebase.firestore.FieldPath;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.pentaware.doorish.AdapterBestSelling;
 import com.pentaware.doorish.BaseFragment;
 import com.pentaware.doorish.CommonVariables;
+import com.pentaware.doorish.LandingPage;
+import com.pentaware.doorish.ProductAdapterClickEvent;
 import com.pentaware.doorish.R;
 import com.pentaware.doorish.model.Address;
 import com.pentaware.doorish.model.AppInfo;
 import com.pentaware.doorish.model.Dashboard;
 import com.pentaware.doorish.model.Product;
+import com.pentaware.doorish.ui.products.ProductDetailFragment;
 import com.pentaware.doorish.ui.products.ProductFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,20 +47,44 @@ import com.pentaware.doorish.ui.subcategories.SubCategories;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeFragment extends BaseFragment implements AdapterView.OnItemClickListener {
+public class HomeFragment extends BaseFragment implements AdapterView.OnItemClickListener, ProductAdapterClickEvent {
 
     private HomeViewModel homeViewModel;
     private View mView;
+
+    private long mLastClickTime = System.currentTimeMillis();
+    private static final long CLICK_TIME_INTERVAL = 1000;
+    RecyclerView recyclerViewBestSelling;
+
+
+    private List<Product> bestSellingProducts = new ArrayList<>();
+    private List<Product> dealsOfTheDay = new ArrayList<>();
+    private List<Product> flat50Off = new ArrayList<>();
+    private List<Product> lowestPrice = new ArrayList<>();
+    private List<Product> newArrivals = new ArrayList<>();
+
+    private List<Product> grp1TopPicks = new ArrayList<>();
+    private List<Product> grp2TopPicks = new ArrayList<>();
+    private List<Product> grp3TopPicks = new ArrayList<>();
+    private List<Product> grp4TopPicks = new ArrayList<>();
+    private List<Product> grp5TopPicks = new ArrayList<>();
+    private List<Product> grp6TopPicks = new ArrayList<>();
+    private List<Product> grp7TopPicks = new ArrayList<>();
+    private List<Product> grp8TopPicks = new ArrayList<>();
+    private List<Product> grp9TopPicks = new ArrayList<>();
+    private List<Product> grp10TopPicks = new ArrayList<>();
+    private List<Product> grp11TopPicks = new ArrayList<>();
+    private List<Product> grp12TopPicks = new ArrayList<>();
 
     List<Uri> lstImages = new ArrayList<>();
 
@@ -152,6 +182,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                     if (document.exists()) {
                         mDashboard = document.toObject(Dashboard.class);
                         setGridImages();
+                        getBestSellingProducts();
 
                         //  Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     } else {
@@ -163,6 +194,294 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             }
         });
     }
+
+    private void getBestSellingProducts() {
+
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.best_selling_products).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        bestSellingProducts.add(product);
+                    }
+
+                    recyclerViewBestSelling.setHasFixedSize(true);
+                    recyclerViewBestSelling.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, true));
+                    recyclerViewBestSelling.setAdapter(new AdapterBestSelling(getContext(), bestSellingProducts, HomeFragment.this));
+
+
+                   // getFlat50Off();
+                }
+            }
+        });
+    }
+
+    private void getFlat50Off() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.flat_50_off).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        flat50Off.add(product);
+                    }
+                    getDealsOfTheDay();
+                }
+            }
+        });
+    }
+
+    private void getDealsOfTheDay() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.deals_of_the_day).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        dealsOfTheDay.add(product);
+                    }
+                    getNewArrivals();
+                }
+            }
+        });
+    }
+
+    private void getNewArrivals() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.new_arrivals).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        newArrivals.add(product);
+                    }
+                    getLowestPrice();
+                }
+            }
+        });
+    }
+
+    private void getLowestPrice() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.lowest_price).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        lowestPrice.add(product);
+                    }
+                    getGrp1TopProducts();
+                }
+            }
+        });
+    }
+
+    private void getGrp1TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_1_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp1TopPicks.add(product);
+                    }
+
+                    getGrp2TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp2TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_2_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp2TopPicks.add(product);
+                    }
+
+                    getGrp3TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp3TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_3_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp3TopPicks.add(product);
+                    }
+
+                    getGrp4TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp4TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_4_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp4TopPicks.add(product);
+                    }
+
+                    getGrp5TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp5TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_5_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp5TopPicks.add(product);
+                    }
+
+                    getGrp6TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp6TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_6_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp6TopPicks.add(product);
+                    }
+
+                    getGrp7TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp7TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_7_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp7TopPicks.add(product);
+                    }
+
+                    getGrp8TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp8TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_8_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp8TopPicks.add(product);
+                    }
+
+                    getGrp9TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp9TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_9_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp9TopPicks.add(product);
+                    }
+
+                    getGrp10TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp10TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_10_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp10TopPicks.add(product);
+                    }
+
+                    getGrp11TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp11TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_11_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp11TopPicks.add(product);
+                    }
+
+                    getGrp12TopProducts();
+
+                }
+            }
+        });
+    }
+
+    private void getGrp12TopProducts() {
+        db.collection("products").whereIn(FieldPath.documentId(), mDashboard.grp_12_top_picks).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(DocumentSnapshot snapshot: task.getResult()){
+                        Product product = snapshot.toObject(Product.class);
+                        grp12TopPicks.add(product);
+                    }
+
+                    //getGrp12TopProducts();
+
+                }
+            }
+        });
+    }
+
+
 
 
     private void setCarouselImages() {
@@ -821,6 +1140,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             }
         });
 
+        recyclerViewBestSelling = mView.findViewById(R.id.recycler_view_best_selling);
+
+
         Log.d("user_orders", "count = " + CommonVariables.user_orders);
 
 
@@ -832,6 +1154,12 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         init();
        // askRatings();
 
+        Log.d("current_loc", String.valueOf(CommonVariables.deliveryAddress.user_loc_lat) + " " + CommonVariables.deliveryAddress.user_loc_long);
+
+//        String uri = String.format(Locale.ENGLISH, "http://maps.google.com/maps?daddr=%f,%f (%s)", 32.381000, 75.549100, "Deliver to");
+//        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+//        intent.setPackage("com.google.android.apps.maps");
+//        startActivity(intent);
 
         return mView;
     }
@@ -1064,5 +1392,53 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 // There was some problem, continue regardless of the result.
             }
         });
+    }
+
+    @Override
+    public void onProductClick(Product product) {
+        long now = System.currentTimeMillis();
+        if (now - mLastClickTime < CLICK_TIME_INTERVAL) {
+            return;
+        }
+        mLastClickTime = now;
+
+        Fragment newFragment = ProductDetailFragment.newInstance(product);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+
+        transaction.hide(this);
+        transaction.add(R.id.nav_host_fragment, newFragment);
+
+        //transaction.replace(R.id.nav_host_fragment, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    @Override
+    public void onNextClick() {
+
+    }
+
+    @Override
+    public void onPreviousClick() {
+
+    }
+
+    @Override
+    public void onHeartClick(Product product) {
+
+    }
+
+    @Override
+    public void onAddToCartClick(Product product, View view) {
+        if(getActivity() != null){
+            ((LandingPage) getActivity()).onAddToCart_Click(view, null, false);
+        }
+
+    }
+
+    @Override
+    public void onBuyWeightClick(Product product) {
+
     }
 }

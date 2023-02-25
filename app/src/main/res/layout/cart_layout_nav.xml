@@ -2,7 +2,8 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -344,6 +345,7 @@
                         android:id="@+id/edit_text_coupon"
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginStart="12dp"
                         android:hint="Enter coupon code"/>
 
@@ -352,10 +354,118 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Apply"
+                        android:visibility="gone"
                         android:layout_alignParentEnd="true"
                         android:layout_alignTop="@id/edit_text_coupon"
                         android:layout_alignBottom="@id/edit_text_coupon"
                         android:layout_marginEnd="12dp"/>
+
+                    <TextView
+                        android:id="@+id/txt_offer_and_benefits"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Offers and Benefits"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:id="@+id/layout_coupon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_offer_and_benefits"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/img_transaction"
+                            android:layout_width="50dp"
+                            android:layout_marginStart="12dp"
+                            android:layout_height="50dp"
+                            app:cardCornerRadius="30dp"
+                            android:layout_centerVertical="true"
+                            android:elevation="0dp"
+                            android:padding="4dp"
+                            android:backgroundTint="@color/color_light_primary">
+
+                            <ImageView
+                                android:layout_width="34dp"
+                                android:layout_height="34dp"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:background="@drawable/ic_discount_color"/>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/txt_coupon_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:text="Coupon code: NEWUSER"
+                            android:layout_marginTop="4dp"
+                            android:layout_toEndOf="@id/img_transaction"
+                            android:textColor="@color/flat_black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:id="@+id/txt_coupon_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/img_transaction"
+                            android:layout_toStartOf="@+id/btn_claim_coupon"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_below="@id/txt_coupon_name"
+                            android:textColor="@color/savings_color"
+                            android:text="Get upto 100% cashback on first order"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btn_claim_coupon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="14dp"
+                            android:text="Applied"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorGreenButton"
+                            android:layout_alignTop="@+id/txt_coupon_name"
+                            android:layout_alignParentEnd="true" />
+
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txt_view_coupons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:textSize="16sp"
+                        android:layout_below="@id/layout_coupon"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="View available coupons"
+                        android:textStyle="bold"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_arrow_right"
+                        android:layout_alignTop="@+id/txt_view_coupons"
+                        android:layout_alignBottom="@id/txt_view_coupons"
+                        android:layout_toEndOf="@+id/txt_view_coupons"/>
+
 
                 </RelativeLayout>
 

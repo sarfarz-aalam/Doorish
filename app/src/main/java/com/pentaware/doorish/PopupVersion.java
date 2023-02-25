@@ -26,7 +26,7 @@ public class PopupVersion extends AppCompatActivity {
 
     public void onUpdate_Click(View view) {
 
-        String url = "https://play.google.com/store/apps/details?id=com.aryan.essentials";
+        String url = "https://bit.ly/3CqL1HO";
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(browserIntent);
     }

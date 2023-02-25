@@ -4,6 +4,7 @@ package com.pentaware.doorish;
 import com.pentaware.doorish.model.Address;
 import com.pentaware.doorish.model.AppInfo;
 import com.pentaware.doorish.model.Cart;
+import com.pentaware.doorish.model.Coupon;
 import com.pentaware.doorish.model.Orders;
 import com.pentaware.doorish.model.Product;
 import com.pentaware.doorish.model.Shops;
@@ -122,5 +123,6 @@ public class CommonVariables {
 
     public static int user_orders = 0;
 
+    public static Coupon selected_coupon = null;
 }
 

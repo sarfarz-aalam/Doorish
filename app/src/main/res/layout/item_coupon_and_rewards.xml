@@ -15,7 +15,7 @@
             android:layout_marginStart="12dp"
             android:layout_height="50dp"
             app:cardCornerRadius="30dp"
-            android:layout_centerVertical="true"
+           android:layout_alignTop="@+id/txt_coupon_name"
             android:elevation="0dp"
             android:padding="4dp"
             android:backgroundTint="@color/color_light_primary">
@@ -37,19 +37,20 @@
             android:layout_marginTop="14dp"
             android:layout_toEndOf="@id/img_transaction"
             android:textColor="@color/flat_black"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Button
+        <TextView
             android:id="@+id/btn_claim_coupon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:text="Copy"
-            android:background="@color/colorPrimary"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/white" />
+            android:layout_marginEnd="14dp"
+            android:text="Apply"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignTop="@+id/txt_coupon_name"
+            android:layout_alignParentEnd="true" />
 
         <TextView
             android:id="@+id/txt_coupon_details"
@@ -60,11 +61,72 @@
             android:layout_marginEnd="12dp"
             android:layout_marginStart="14dp"
             android:layout_below="@id/txt_coupon_name"
+            android:textColor="@color/savings_color"
             android:text="Get upto 100% cashback on first order"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="14dp"
-            android:textSize="13sp"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_coupon_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/img_transaction"
+            android:layout_toStartOf="@id/btn_claim_coupon"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="14dp"
+            android:textSize="14sp"
+            android:layout_below="@id/txt_coupon_details"
+            android:text="Use code welcomeback and get 60% off on orders above 100."
+            android:layout_marginTop="5dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/layout_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_alignStart="@id/txt_coupon_desc"
+            android:layout_below="@id/txt_coupon_desc">
+
+            <ImageView
+                android:id="@+id/img_add"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignTop="@id/txt_more"
+                android:layout_alignBottom="@+id/txt_more"
+
+                android:src="@drawable/ic_baseline_add_24"/>
+
+            <TextView
+                android:id="@+id/txt_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MORE"
+                android:textAllCaps="true"
+                android:layout_toEndOf="@id/img_add"
+                android:layout_marginStart="4dp"
+                android:textColor="#33A5FF"
+                android:textStyle="bold"
+               />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/txt_terms_and_conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/layout_more"
+            android:text="terms and conditions"
+            android:layout_below="@+id/layout_more"
+            android:visibility="gone"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
 
     </RelativeLayout>
 

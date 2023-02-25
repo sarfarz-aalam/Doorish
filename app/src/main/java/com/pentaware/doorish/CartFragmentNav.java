@@ -44,6 +44,9 @@ import com.pentaware.doorish.model.Product;
 import com.pentaware.doorish.model.User;
 import com.pentaware.doorish.ui.orders.MyOrdersFragment;
 import com.pentaware.doorish.ui.products.ProductFragment;
+import com.pentaware.doorish.ui.wallet.CouponAndRewardFragment;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -87,10 +90,16 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
     int cartItems = 0;
     View mView;
     CheckBox chkUseWallet;
+    private boolean couponApplied = false;
+
+    double discount = 0;
+    double savings = 0;
 
     private TextView txtWalletMoneyUsed, txtDiscount, txtTotalSavings;
+    private RelativeLayout layoutCoupon;
 
     MenuItem menuItem;
+    private double couponDiscount;
 
     @Nullable
     @Override
@@ -112,10 +121,14 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
         txtTotalSavings = mView.findViewById(R.id.txt_savings);
         EditText editTextCoupon = mView.findViewById(R.id.edit_text_coupon);
         btnApplyCoupon = mView.findViewById(R.id.btn_apply_coupon);
+        TextView txtViewCoupons = mView.findViewById(R.id.txt_view_coupons);
+        layoutCoupon = mView.findViewById(R.id.layout_coupon);
 
         Button btnShopMore = mView.findViewById(R.id.btnShopMore);
 
         progressBarCart = mView.findViewById(R.id.progress_bar_cart);
+
+
 
 
 
@@ -137,6 +150,16 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
                 UseWallet(isChecked);
             }
         });
+
+        txtViewCoupons.setOnClickListener(view -> {
+            Fragment newFragment = new CouponAndRewardFragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.hide(CartFragmentNav.this);
+            transaction.replace(R.id.nav_host_fragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        });
+
 
         btnShopNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,17 +241,20 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
         });
 
 
+
         return mView;
     }
 
     public void applyCoupon(Coupon coupon){
+        Log.d("coupon_apply", "applied");
         double amount = iTotalAmont - CommonVariables.deliveryCharges;
+
         if(coupon.coupon_type.equals("Percent")){
-            double discount =  ((coupon.coupon_disount / 100f) * amount);
+            couponDiscount =  ((coupon.coupon_disount / 100f) * amount);
             Log.d("coupon_used", "discount: " + discount + " itotalamount: " + iTotalAmont) ;
-            if(discount <= iTotalAmont){
-                iTotalAmont = iTotalAmont - discount;
-                Log.d("coupon_applied",  "iTotal: " + iTotalAmont + "net: " + amount + " dicount: " + discount);
+            if(couponDiscount <= iTotalAmont){
+                iTotalAmont = iTotalAmont - couponDiscount;
+                Log.d("coupon_applied",  "iTotal: " + iTotalAmont + "net: " + amount + " dicount: " + couponDiscount);
             }
 
             else iTotalAmont = 0;
@@ -239,6 +265,7 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
             if(iTotalAmont > 99){
                 if(coupon.coupon_disount <= iTotalAmont){
                     iTotalAmont = iTotalAmont - coupon.coupon_disount;
+                    couponDiscount = coupon.coupon_disount;
                 }
                 else iTotalAmont = 0;
             }
@@ -254,6 +281,31 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
         mOriginalNetPayable = iTotalAmont;
         originalTotalAmount = iTotalAmont;
         txtNetPayable.setText(CommonVariables.rupeeSymbol + String.format("%.2f", iTotalAmont));
+
+        TextView txtCouponName = mView.findViewById(R.id.txt_coupon_name);
+        TextView txtCouponDetails = mView.findViewById(R.id.txt_coupon_details);
+
+        String strCouponName = coupon.coupon_name;
+        txtCouponName.setText(strCouponName);
+
+        discount += couponDiscount;
+        txtDiscount.setText("-"  + CommonVariables.rupeeSymbol + CommonMethods.formatCurrency(discount));
+
+        savings += couponDiscount;
+        txtTotalSavings.setText(CommonVariables.rupeeSymbol + CommonMethods.formatCurrency(savings));
+        CommonVariables.totalSavings = savings;
+
+        String strCouponDetails = "";
+        if(coupon.coupon_type.equals("Percent"))
+            strCouponDetails = "Get upto " + coupon.coupon_disount + "% OFF on your order";
+        else strCouponDetails = "Get flat " + CommonVariables.rupeeSymbol + coupon.coupon_disount + " OFF on your order";
+
+        txtCouponDetails.setText(strCouponDetails);
+        couponApplied = true;
+        couponDiscount = coupon.coupon_disount;
+
+        layoutCoupon.setVisibility(View.VISIBLE);
+
     }
 
     private void hideUI() {
@@ -464,7 +516,7 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
     }
 
 
-    private void LoadCart() {
+    public void LoadCart() {
         iProductCharges = 0;
         iTotalAmont = 0;
         iMrpCharges = 0;
@@ -538,10 +590,15 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
 
         txtWalletMoneyUsed.setText(CommonVariables.rupeeSymbol + 0);
 
-        double discount = iMrpCharges - iProductCharges;
+        discount = iMrpCharges - iProductCharges;
+//        if(couponApplied){
+//            discount += couponDiscount;
+//            Log.d("coupon_applied", "applied: " + discount + " " + couponDiscount);
+//        }
+
         txtDiscount.setText("-"  + CommonVariables.rupeeSymbol + CommonMethods.formatCurrency(discount));
 
-        double savings = discount;
+        savings = discount;
 
 
         if(iDeliveryCharges == 0){
@@ -599,12 +656,17 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
         }
 
 
+        if(CommonVariables.selected_coupon != null)
+            applyCoupon(CommonVariables.selected_coupon);
+
+
     }
 
     public void loadRecyclerView(){
         adapter = new AdapterCartListing(listItems, mView.getContext(), mCartOperations);
         recyclerView.setAdapter(adapter);
         gifImageView.setVisibility(View.GONE);
+
     }
 
     public double getOfferPrice(Cart cart, Product product) {
@@ -791,5 +853,31 @@ public class CartFragmentNav extends BaseFragment implements ICartOperatoins {
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         menu.findItem(R.id.testAction).setEnabled(false);
+    }
+
+    @Override
+    public void onStop() {
+
+        Log.d("cartFragmentNav", "on stop");
+        super.onStop();
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        CommonVariables.selected_coupon = null;
+    }
+
+    @Override
+    public void onStart() {
+        Log.d("cartFragmentNav", "on start");
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        Log.d("cartFragmentNav", "on resume");
+        super.onResume();
     }
 }

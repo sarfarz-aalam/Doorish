@@ -1,38 +1,28 @@
 package com.pentaware.doorish;
 
-
-import android.content.ClipboardManager;
 import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.pentaware.doorish.model.Coupon;
-import com.pentaware.doorish.model.WalletStatement;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class AdapterCouponAndRewards extends RecyclerView.Adapter<AdapterCouponAndRewards.ViewHolder> {
 
     private List<Coupon> couponList;
     private Context m_Context;
+    private ICoupon iCoupon;
 
 
-    public AdapterCouponAndRewards(Context ctx, List<Coupon> couponList) {
+    public AdapterCouponAndRewards(Context ctx, List<Coupon> couponList, ICoupon iCoupon) {
         this.couponList = couponList;
         m_Context = ctx;
+        this.iCoupon = iCoupon;
     }
 
     @NonNull
@@ -46,7 +36,7 @@ public class AdapterCouponAndRewards extends RecyclerView.Adapter<AdapterCouponA
     public void onBindViewHolder(@NonNull AdapterCouponAndRewards.ViewHolder holder, int position) {
         Coupon coupon = couponList.get(position);
 
-        String strCouponName = "Coupon Name: " + coupon.coupon_name;
+        String strCouponName = coupon.coupon_name;
         holder.txtCouponName.setText(strCouponName);
 
         String strCouponDetails = "";
@@ -54,8 +44,23 @@ public class AdapterCouponAndRewards extends RecyclerView.Adapter<AdapterCouponA
             strCouponDetails = "Get upto " + coupon.coupon_disount + "% OFF on your order";
         else strCouponDetails = "Get flat " + CommonVariables.rupeeSymbol + coupon.coupon_disount + " OFF on your order";
 
+        String strCouponDesc = "";
+        if(coupon.coupon_type.equals("Percent"))
+            strCouponDesc = "Use code " + coupon.coupon_name + " and get upto " + coupon.coupon_disount +  "% off on orders above " +
+                    CommonVariables.rupeeSymbol + "100.";
+        else strCouponDesc = "Use code " + coupon.coupon_name + " and get upto " + CommonVariables.rupeeSymbol + coupon.coupon_disount +  " off on orders above " +
+                CommonVariables.rupeeSymbol + "100.";
+
+
+        holder.txtCouponDesc.setText(strCouponDesc);
         holder.txtCouponDetails.setText(strCouponDetails);
 
+        String strTermsAndConditions = "Terms and Conditions \n\n";
+        for(int i = 0; i < coupon.terms_and_conditions.size(); i++){
+            strTermsAndConditions += "•" + coupon.terms_and_conditions.get(i) + "\n";
+        }
+
+        holder.txtTermsAndConditions.setText(strTermsAndConditions);
 
     }
 
@@ -66,8 +71,9 @@ public class AdapterCouponAndRewards extends RecyclerView.Adapter<AdapterCouponA
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtCouponName, txtCouponDetails;
-        public Button btnClaimCoupon;
+        public TextView txtCouponName, txtCouponDetails, txtTermsAndConditions, txtCouponDesc;
+        public TextView btnClaimCoupon;
+        public RelativeLayout layoutMore;
 
         public ViewHolder(View itemView, Context ctx) {
             super(itemView);
@@ -75,11 +81,20 @@ public class AdapterCouponAndRewards extends RecyclerView.Adapter<AdapterCouponA
             txtCouponName = itemView.findViewById(R.id.txt_coupon_name);
             txtCouponDetails = itemView.findViewById(R.id.txt_coupon_details);
             btnClaimCoupon = itemView.findViewById(R.id.btn_claim_coupon);
+            txtTermsAndConditions = itemView.findViewById(R.id.txt_terms_and_conditions);
+            txtCouponDesc = itemView.findViewById(R.id.txt_coupon_desc);
+            layoutMore = itemView.findViewById(R.id.layout_more);
 
             btnClaimCoupon.setOnClickListener(view -> {
-                ClipboardManager _clipboard = (ClipboardManager)ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-                _clipboard.setText(couponList.get(getAdapterPosition()).coupon_name);
-                Toast.makeText(ctx, "Coupon code copied successfully", Toast.LENGTH_SHORT).show();
+//                ClipboardManager _clipboard = (ClipboardManager)ctx.getSystemService(Context.CLIPBOARD_SERVICE);
+//                _clipboard.setText(couponList.get(getAdapterPosition()).coupon_name);
+                Toast.makeText(ctx, "Coupon code applied successfully", Toast.LENGTH_SHORT).show();
+                iCoupon.applyCoupon(couponList.get(getAdapterPosition()));
+            });
+
+            layoutMore.setOnClickListener(view -> {
+                layoutMore.setVisibility(View.GONE);
+                txtTermsAndConditions.setVisibility(View.VISIBLE);
             });
         }
         @Override

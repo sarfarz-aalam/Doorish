@@ -118,6 +118,18 @@
                     android:contentDescription="@string/dashboard_image"
                     android:scaleType="fitXY" />
 
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view_best_selling"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.core.widget.NestedScrollView>
+
+
                 <!--        Grid 0-->
                 <LinearLayout
                     android:layout_width="match_parent"

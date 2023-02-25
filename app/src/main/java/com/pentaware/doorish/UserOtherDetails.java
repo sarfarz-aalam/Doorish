@@ -1,21 +1,34 @@
 package com.pentaware.doorish;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.CancellationToken;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.pentaware.doorish.model.Address;
 import com.pentaware.doorish.model.User;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,10 +46,22 @@ import static android.view.View.GONE;
 
 public class UserOtherDetails extends AppCompatActivity {
 
+
+    FusedLocationProviderClient fusedLocationProviderClient;
+
+    private final static int REQUEST_CODE = 100;
+
+    public LocationManager locationManager;
+    Address objAddress = new Address();
+
     private User currentUser;
     private FirebaseAuth mAuth;
     public String m_fcmToken;
 
+    public ProgressBar progressBarLocation;
+    public ImageView imgLocationDone;
+
+    public RelativeLayout layoutGetLocation;
     EditText txtName;
     EditText txtPhone;
     EditText txtEmail;
@@ -90,6 +115,13 @@ public class UserOtherDetails extends AppCompatActivity {
         }
 
         btnLogout = findViewById(R.id.btnLogout);
+
+        progressBarLocation = findViewById(R.id.location_progress_bar);
+        imgLocationDone = findViewById(R.id.img_location_done);
+
+        layoutGetLocation = findViewById(R.id.layout_get_location);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
 
         txtName = findViewById(R.id.txtOhterDetailsName);
@@ -146,7 +178,7 @@ public class UserOtherDetails extends AppCompatActivity {
                 txtAdddressLine3.setText(existingAddress.AddressLine3);
                 txtLandmark.setText(existingAddress.Landmark);
                 txtPincode.setText(existingAddress.Pincode);
-                if(existingAddress.dob != null){
+                if (existingAddress.dob != null) {
                     editTextDob.setText(existingAddress.dob);
                 }
                 txtCity.setText(existingAddress.City);
@@ -165,7 +197,104 @@ public class UserOtherDetails extends AppCompatActivity {
         }
 
 
+        //getting user location
+        layoutGetLocation.setOnClickListener(view -> {
+            Log.d("current_loc", "clicked");
+            getUserLocation();
+        });
+
+
     }
+
+    private void getUserLocation() {
+
+        progressBarLocation.setVisibility(View.VISIBLE);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+                fusedLocationProviderClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, new CancellationToken() {
+                    @NonNull
+                    @Override
+                    public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
+                        return null;
+                    }
+
+                    @Override
+                    public boolean isCancellationRequested() {
+                        return false;
+                    }
+                }).addOnSuccessListener(location -> {
+                    if (location != null) {
+                        objAddress.user_loc_long = location.getLongitude();
+                        objAddress.user_loc_lat = location.getLatitude();
+                        Log.d("current_loc", String.valueOf(location.getLatitude()) + " " + location.getLongitude());
+                        progressBarLocation.setVisibility(GONE);
+                        imgLocationDone.setVisibility(View.VISIBLE);
+                    }
+                }).addOnFailureListener(e -> {
+                    imgLocationDone.setVisibility(GONE);
+                    progressBarLocation.setVisibility(GONE);
+                });
+            } else {
+                showGPSDisabledAlertToUser();
+            }
+
+//            fusedLocationProviderClient.getLastLocation()
+//                    .addOnSuccessListener(new OnSuccessListener<Location>() {
+//                        @Override
+//                        public void onSuccess(Location location) {
+//                            if (location != null){
+//                                Log.d("current_loc", String.valueOf(location.getLatitude()) +" "+ location.getLongitude());
+//                            }
+//                        }
+//                    });
+
+
+        } else {
+            askPermission();
+        }
+    }
+
+    private void askPermission() {
+        ActivityCompat.requestPermissions(UserOtherDetails.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull @org.jetbrains.annotations.NotNull String[] permissions, @NonNull @org.jetbrains.annotations.NotNull int[] grantResults) {
+
+        if (requestCode == REQUEST_CODE) {
+
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getUserLocation();
+
+            } else {
+                Toast.makeText(UserOtherDetails.this, "Please provide the required permission", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void showGPSDisabledAlertToUser() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Location service is disabled in your device. Would you like to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        (dialog, id) -> {
+                            Intent callGPSSettingIntent = new Intent(
+                                    android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                            startActivity(callGPSSettingIntent);
+                            imgLocationDone.setVisibility(GONE);
+                            progressBarLocation.setVisibility(GONE);
+                        });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
 
     @Override
     protected void onStart() {
@@ -192,6 +321,11 @@ public class UserOtherDetails extends AppCompatActivity {
         if (txtName.getText().toString().trim().equals("")) {
             txtName.setError("Name can't be empty");
             bErrorFound = true;
+        }
+
+        if (objAddress.user_loc_lat == 0 || objAddress.user_loc_long == 0) {
+            bErrorFound = true;
+            Toast.makeText(this, "User location is required", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -266,7 +400,7 @@ public class UserOtherDetails extends AppCompatActivity {
 
         String userId = mAuth.getUid();
 
-        Address objAddress = new Address();
+
         if (!m_bAddAddress) {
             objAddress.AddressId = UUID.randomUUID().toString();
 
@@ -358,17 +492,16 @@ public class UserOtherDetails extends AppCompatActivity {
 
             String addressId = objAddress.AddressId;
 
-            if(editAddress){
+            if (editAddress) {
                 addressId = existingAddress.AddressId;
                 objAddress.AddressId = addressId;
             }
 
             db.collection("users").document(userId).collection("Addresses").document(addressId).set(objAddress);
             CommonVariables.loggedInUserDetails.AddressList.add(objAddress);
-            if(editAddress){
+            if (editAddress) {
                 Toast.makeText(this, "Address updated successfully", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 Toast.makeText(this, "New address added", Toast.LENGTH_SHORT).show();
             }
 
@@ -409,5 +542,7 @@ public class UserOtherDetails extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
 }
 

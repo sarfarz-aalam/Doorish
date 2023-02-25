@@ -70,7 +70,7 @@ public class Orders implements Serializable {
 
     public Date settlement_date;
 
-    public String delivery_agent_id;
+    public String delivery_partner_id;
 
     public String pickup_rejection_reason;
 
@@ -89,6 +89,10 @@ public class Orders implements Serializable {
     public String AddressLine2;
 
     public String AddressLine3;
+
+    public double user_loc_lat = 0;
+
+    public double user_loc_long = 0;
 
     public String Landmark;
 
